@@ -13,4 +13,46 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">?android:colorPrimary</item>
+        <item name="activityChooserViewStyle">@style/Theme.MaterialComponents.DayNight.DarkActionBar</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:navigationBarColor">?android:colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar.TransparentStatus">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+    <style name="DefaultTheme" parent="@android:style/Theme.Material.Light.DarkActionBar">
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="android:colorAccent">@color/colorAccent</item>
+        <item name="android:navigationBarColor">?android:colorPrimary</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <style name="BoatTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+    <style name="FullScreenTheme" parent="@android:style/Theme.Holo.Light.NoActionBar">
+        <item name="android:windowFullscreen">true</item>
+    </style>
+    <style name="TextStyleTitle">
+        <item name="android:textAppearance">?attr/textAppearanceSubtitle1</item>
+        <item name="android:textSize">@dimen/font_15</item>
+        <item name="android:lineSpacingExtra">1.0sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
 </resources>

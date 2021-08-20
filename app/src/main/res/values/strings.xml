@@ -1,3 +1,88 @@
 <resources>
     <string name="app_name">HAMCL</string>
+
+    <!--  =====================================Functionbar===================================== -->
+
+    <string name="fb_title_account">账户</string>
+    <string name="fb_title_game">游戏</string>
+    <string name="fb_title_library">核心库</string>
+    <string name="fb_title_launcher">启动器</string>
+
+    <string name="fb_user_manage">用户管理</string>
+    <string name="fb_game_manage">游戏管理</string>
+    <string name="fb_game_list">游戏列表</string>
+    <string name="fb_library_manage">核心安装管理</string>
+    <string name="fb_minecraft_log">游戏日志</string>
+    <string name="fb_launcher_settings">启动器设置</string>
+
+    <!--  =====================================Homepage===================================== -->
+
+    <string name="home_start">开始游戏</string>
+    <string name="home_version">Explore_Launcher-Beta0.2.4Debug</string>
+
+    <string name="home_title_homepage">主页</string>
+    <string name="home_title_download_games">游戏管理 - 安装新游戏版本</string>
+    <string name="home_title_game_setting">游戏管理 - 全局游戏设置</string>
+    <string name="home_title_install_package">游戏管理 - 安装整合包</string>
+
+    <!--  =====================================Users_Manage===================================== -->
+
+    <string name="user_new_account">新建账户</string>
+    <string name="user_login_mode">登录方式</string>
+    <string name="user_account_name">用户名</string>
+    <string name="user_fill_account">注:在此填写您的账户!</string>
+    <string name="user_password">密码</string>
+    <string name="user_fill_password">注:在此填写您的密码!</string>
+    <string name="user_cancel">取消</string>
+    <string name="user_determine">确定</string>
+
+
+    <string name="title_clear_log">清理日志</string>
+    <string name="title_refresh_log">刷新日志</string>
+    <string name="title_copy">复制日志</string>
+
+    <string name="librarys">Library</string>
+    <string name="installs">Install</string>
+    <string name="menu_2_hint">Directory of runtime(tar.xz/zip)</string>
+
+    <string name="title_install_games">安装新游戏版本</string>
+    <string name="title_install_packages">安装整合包</string>
+    <string name="title_refresh">刷新</string>
+    <string name="title_games_setting">全局游戏设置</string>
+
+    <string name="download_release">稳定版</string>
+    <string name="download_snapshot">测试版</string>
+    <string name="download_old_beta">远古版</string>
+
+    <string name="title_add_package">添加整合包</string>
+    <string name="title_download_package">下载整合包</string>
+    <string name="set_default_path">设置默认路径</string>
+    <string name="game_path">游戏路径</string>
+    <string name="menu_5">整合包管理(仅支持zip内包含名为boat的主体文件夹整合包)</string>
+    <string name="menu_5_adt">提示</string>
+    <string name="menu_5_adm">是否删除当前文件？</string>
+    <string name="menu_5_tt">整合包已经删除，已恢复到默认整合包。</string>
+    <string name="menu_5_ttd">安装完成！</string>
+    <string name="menu_5_ttdn">您安装了错误的整合包，请选择正确的整合包。</string>
+    <string name="menu_5_dfd">设置默认路径</string>
+    <string name="menu_5_ttt">已设置成默认整合包路径</string>
+    <string name="menu_5_adtt">提示</string>
+    <string name="menu_5_hint">输入你想添加整合包的备注</string>
+    <string name="menu_5_ref">刷新</string>
+    <string name="menu_5_dn">下载</string>
+    <string name="menu_5_add">添加</string>
+    <string name="menu_5_del">删除</string>
+    <string name="menu_5_delall">你要删除全部文件嘛？</string>
+
+    <string name="basic_game_settings">基本游戏设置</string>
+    <string name="java_virtual_ram">Java虚拟机内存设定</string>
+    <string name="ram_setting">游戏内存设置:只改数字!</string>
+    <string name="mk">启用键鼠Beta</string>
+
+    <string name="text_setting_help_file">Explore_Launcher 帮助文档</string>
+    <string name="text_setting_help_title">可查阅启动器使用教程 以及其它功能</string>
+    <string name="text_setting_background_path">背景地址</string>
+    <string name="text_setting_background_title">默认(自动检索启动器同目录下的background .png/jpg及bg文件夹内的图片)</string>
+    <string name="text_setting_hide_statusbar">隐藏状态栏</string>
+    <string name="text_setting_statusbar_title">默认关闭 打开将自动隐藏状态栏</string>
 </resources>

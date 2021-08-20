@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+<com.google.android.material.appbar.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="4dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:minHeight="?android:attr/actionBarSize"
+        android:theme="?android:attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:title="@string/app_name">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginEnd="5dp"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/toolbar_button_backspace"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_toolbar_back_white"/>
+
+            <TextView
+                android:id="@+id/main_text_showstate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:text="@string/home_title_homepage"
+                android:textColor="@color/theme_white"
+                android:textSize="@dimen/font_14"/>
+
+            <ImageButton
+                android:id="@+id/toolbar_button_backhome"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_toolbar_home_white"/>
+
+            <ImageButton
+                android:id="@+id/toolbar_button_refresh"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_toolbar_refresh_white"/>
+
+        </LinearLayout>
+
+    </com.google.android.material.appbar.MaterialToolbar>
+
+</com.google.android.material.appbar.AppBarLayout>
+
+<LinearLayout
+android:layout_height="match_parent"
+android:layout_width="match_parent"
+android:orientation="horizontal"
+android:weightSum="4.3">
+
+<FrameLayout
+    android:id="@+id/functionbar_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="3.3"/>
+
+<FrameLayout
+    android:id="@+id/homepage_fl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"/>
+
+</LinearLayout>
+
+    </LinearLayout>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="arrays">
+        <item>离线模式</item>
+        <item>正版登录</item>
+    </string-array>
+
+    <string-array name="download_source">
+        <item>OFFICIAL</item>
+        <item>MCBBS</item>
+        <item>BMCLAPI</item>
+    </string-array>
+</resources>

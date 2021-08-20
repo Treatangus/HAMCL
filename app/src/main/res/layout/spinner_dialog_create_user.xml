@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.textview.MaterialTextView
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	style="?android:attr/spinnerItemStyle"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:textColor="@color/black_text"
+	android:textSize="@dimen/font_15"
+	android:ellipsize="marquee"
+	android:singleLine="true"
+	android:textAlignment="inherit"
+	android:paddingTop="20dp"
+	android:paddingBottom="20dp"
+	android:paddingLeft="20dp"
+	android:paddingRight="20dp"/>
+
