@@ -22,16 +22,13 @@ import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.functionbar.FunctionbarFragment;
+import com.launcher.hamcl.uis.homepage.GamesListFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
-import com.tbruyelle.rxpermissions2.Permission;
-import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.HashMap;
 import java.util.Objects;
-
-import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -53,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FrameLayout homepage_fl;
     private StartFragment start_fragment;
     private UserFragment user_fragment;
+    private GamesListFragment games_list_fragment;
     private LibraryFragment library_fragment;
 
     private FragmentTransaction HomepageTransaction;//fragment事务
@@ -225,6 +223,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HomepageTransaction.show(user_fragment);
                 }
                 break;
+            case 3:
+                if (games_list_fragment == null) {
+                    games_list_fragment = new GamesListFragment();
+                    //加入事务
+                    HomepageTransaction.add(R.id.homepage_fl, games_list_fragment);
+                } else {
+                    //如果用户fragment不为空就显示出来
+                    HomepageTransaction.show(games_list_fragment);
+                }
+                break;
 			/*case 2:
                 if (games_fragment == null) {
                     games_fragment = new GamesFragment();
@@ -314,6 +322,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (user_fragment != null) {
             fragmentTransaction.hide(user_fragment);
         }
+        if (games_list_fragment != null) {
+            fragmentTransaction.hide(games_list_fragment);
+        }
 		/*if (games_fragment != null) {
             fragmentTransaction.hide(games_fragment);
         }
@@ -350,27 +361,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         saveSetting();
     }
 
-
-    RxPermissions rxPermissions = new RxPermissions (this);
     public void requestPermission() {
-        String[] permissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
-        rxPermissions.requestEach (permissions).subscribe (new Consumer<Permission> () {
-            @Override
-            public void accept (Permission permission) throws Exception {
-                if (permission.granted){
-                    //允许
-                }else if (permission.shouldShowRequestPermissionRationale){
-                    //拒绝，没有选中 不再询问
-
-                }else {
-                    //拒绝，选择不再询问
-                }
-            }
-        });
-
-
-     /*
-
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -382,6 +373,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
 
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-        }*/
+        }
     }
 }

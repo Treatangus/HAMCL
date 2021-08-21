@@ -5,6 +5,8 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.core.widget.TextViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -34,8 +36,8 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
     private RelativeLayout library_management_rl;
     private RelativeLayout starter_settings_rl;
 
-    private MaterialTextView user_name_tv;
-    private MaterialTextView user_mode_tv;
+    private AppCompatTextView user_name_tv;
+    private AppCompatTextView user_mode_tv;
 
     private MainActivity parents;
     private FragmentTransaction HomepageTransaction;
@@ -111,7 +113,7 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
 
                 break;
             case R.id.game_list_rl:
-
+                setHomepageClick(3);
                 break;
             case R.id.minecraft_log_rl:
 

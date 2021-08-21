@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_test_the_game"
+        android:icon="@drawable/ic_send_black"
+        android:title="@string/menu_games_test"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_game_manage"
+        android:icon="@drawable/ic_setting_black"
+        android:title="@string/menu_games_manage"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_rename_this_version"
+        android:icon="@drawable/ic_pencil_black"
+        android:title="@string/menu_rename_games"
+        app:showAsAction="withText" />
+
+    <item
+        android:id="@+id/item_delete_version"
+        android:icon="@drawable/ic_delete_black"
+        android:title="@string/menu_delete_games"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_derive_package"
+        android:icon="@drawable/ic_export_black"
+        android:title="@string/menu_derive_package"
+        app:showAsAction="withText" />
+    <item
+        android:id="@+id/item_game_folder"
+        android:icon="@drawable/ic_folder_black"
+        android:title="@string/menu_games_folder"
+        app:showAsAction="withText" />
+</menu>

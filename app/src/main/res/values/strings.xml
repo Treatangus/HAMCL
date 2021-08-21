@@ -36,6 +36,20 @@
     <string name="user_cancel">取消</string>
     <string name="user_determine">确定</string>
 
+    <!--  =====================================Games_List===================================== -->
+
+    <string name="list_title_install_games">安装新游戏版本</string>
+    <string name="list_title_install_packages">安装整合包</string>
+    <string name="list_title_refresh">刷新</string>
+    <string name="list_title_games_setting">全局游戏设置</string>
+
+    <string name="menu_games_test">测试游戏</string>
+    <string name="menu_games_manage">游戏管理</string>
+    <string name="menu_rename_games">重命名该版本</string>
+    <string name="menu_delete_games">删除该版本</string>
+    <string name="menu_derive_package">导出整合包</string>
+    <string name="menu_games_folder">游戏文件夹</string>
+
 
     <string name="title_clear_log">清理日志</string>
     <string name="title_refresh_log">刷新日志</string>
@@ -44,11 +58,6 @@
     <string name="librarys">Library</string>
     <string name="installs">Install</string>
     <string name="menu_2_hint">Directory of runtime(tar.xz/zip)</string>
-
-    <string name="title_install_games">安装新游戏版本</string>
-    <string name="title_install_packages">安装整合包</string>
-    <string name="title_refresh">刷新</string>
-    <string name="title_games_setting">全局游戏设置</string>
 
     <string name="download_release">稳定版</string>
     <string name="download_snapshot">测试版</string>
@@ -85,4 +94,6 @@
     <string name="text_setting_background_title">默认(自动检索启动器同目录下的background .png/jpg及bg文件夹内的图片)</string>
     <string name="text_setting_hide_statusbar">隐藏状态栏</string>
     <string name="text_setting_statusbar_title">默认关闭 打开将自动隐藏状态栏</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

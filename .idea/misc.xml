@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_send_black.xml" value="0.1925925925925926" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.1646403242147923" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/dialog_create_user.xml" value="0.22" />
-        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_functionbar.xml" value="0.33" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_functionbar.xml" value="0.25" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_games_list.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_start.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_dialog_create_user.xml" value="0.13541666666666666" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/menu/menu_adapter_version.xml" value="0.25462962962962965" />
       </map>
     </option>
   </component>
