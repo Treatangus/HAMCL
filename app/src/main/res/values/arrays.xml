@@ -3,6 +3,7 @@
     <string-array name="arrays">
         <item>离线模式</item>
         <item>正版登录</item>
+        <item>微软登录</item>
     </string-array>
 
     <string-array name="download_source">
