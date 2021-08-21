@@ -93,10 +93,13 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
     }
 
     private void setHomepageClick(int type) {
-        HomepageTransaction = ((MainActivity)this.getActivity()).getSupportFragmentManager().beginTransaction();
+        /*HomepageTransaction = ((MainActivity)this.getActivity()).getSupportFragmentManager().beginTransaction();
         ((MainActivity)this.getActivity()).Homepageline=type;
         ((MainActivity)this.getActivity()).hideHomepageFragment(HomepageTransaction);
-        ((MainActivity)this.getActivity()).setHomepageClick(type);
+        ((MainActivity)this.getActivity()).setHomepageClick(type);*/
+
+        parents.Homepageline=parents.AddArray(parents.Homepageline,type);
+        parents.setHomepageClick(type);
     }
 
     @Override

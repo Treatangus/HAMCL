@@ -135,6 +135,11 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             genuine_login.setVisibility(View.GONE);
                             offline_mode.setVisibility( View.VISIBLE);
                         }
+                        else if(genuine_login.getVisibility()== View.GONE)
+                        {
+                            genuine_login.setVisibility(View.GONE);
+                            offline_mode.setVisibility( View.VISIBLE);
+                        }
                         Toast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
@@ -143,7 +148,17 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             offline_mode.setVisibility(View.VISIBLE);
                             genuine_login.setVisibility( View.VISIBLE);
                         }
+                        else if(offline_mode.getVisibility()== View.GONE)
+                        {
+                            offline_mode.setVisibility(View.VISIBLE);
+                            genuine_login.setVisibility( View.VISIBLE);
+                        }
                         Toast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        offline_mode.setVisibility(View.GONE);
+                        genuine_login.setVisibility( View.GONE);
+                        Toast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT).show();
                         break;
                 }
             }
@@ -165,13 +180,16 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
         btn_agree_high_opion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(offline_mode.getVisibility() == View.VISIBLE) {
-                    settingManager.saveConfigToFile(configModel);
+                if(offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.GONE) {
+                    //settingManager.saveConfigToFile(configModel);
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "创建成功", Toast.LENGTH_SHORT).show();
-                } else if(genuine_login.getVisibility() == View.VISIBLE){
+                } else if(offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.VISIBLE){
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "登录中", Toast.LENGTH_SHORT).show();
+                } else if(offline_mode.getVisibility() == View.GONE||genuine_login.getVisibility() == View.GONE){
+                    dialog.dismiss();
+                    Toast.makeText(getActivity(), "微软登录中", Toast.LENGTH_SHORT).show();
                 }
             }
         });

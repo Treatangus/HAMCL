@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/dialog_create_user.xml" value="0.22" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_dialog_create_user.xml" value="0.13541666666666666" />
       </map>
     </option>
   </component>
