@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">HAMCL</string>
+    <string name="app_name">HAMCL1.0</string>
 
     <!--  =====================================Functionbar===================================== -->
 
@@ -18,7 +18,7 @@
     <!--  =====================================Homepage===================================== -->
 
     <string name="home_start">开始游戏</string>
-    <string name="home_version">Explore_Launcher-Beta0.2.4Debug</string>
+    <string name="home_version">HAMCL-Beta1.0Debug</string>
 
     <string name="home_title_homepage">主页</string>
     <string name="home_title_download_games">游戏管理 - 安装新游戏版本</string>
