@@ -1,2 +1,6 @@
 # Hello Android Minecraft Launcher(HAMCL)
-Start minecraft Java Edition on your Android device based on BoatApp secondary development
+Launch Minecraft Java Edition on Android device.
+
+## How Can I Use?
+Just download HAMCL and launch it
+It just like HMCL on Windows,you can download minecraft and forge in App.
