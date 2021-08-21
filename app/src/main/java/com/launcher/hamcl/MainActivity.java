@@ -25,9 +25,13 @@ import com.launcher.hamcl.uis.functionbar.FunctionbarFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.HashMap;
 import java.util.Objects;
+
+import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -346,7 +350,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         saveSetting();
     }
 
+
+    RxPermissions rxPermissions = new RxPermissions (this);
     public void requestPermission() {
+        String[] permissions = new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        rxPermissions.requestEach (permissions).subscribe (new Consumer<Permission> () {
+            @Override
+            public void accept (Permission permission) throws Exception {
+                if (permission.granted){
+                    //允许
+                }else if (permission.shouldShowRequestPermissionRationale){
+                    //拒绝，没有选中 不再询问
+
+                }else {
+                    //拒绝，选择不再询问
+                }
+            }
+        });
+
+
+     /*
+
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
@@ -358,6 +382,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
 
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-        }
+        }*/
     }
 }

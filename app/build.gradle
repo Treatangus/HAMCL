@@ -34,6 +34,12 @@ dependencies {
     implementation 'com.squareup.okhttp3:okhttp:5.0.0-alpha.2'
     implementation 'com.alibaba:fastjson:1.2.76'
     implementation 'com.google.code.gson:gson:2.8.7'
+    implementation  'io.reactivex.rxjava2:rxjava:+'
+    implementation  'io.reactivex.rxjava2:rxandroid:+'
+    //rxpermission（配套rxjava使用的）
+    implementation 'com.tbruyelle.rxpermissions2:rxpermissions:+'
+
+
     implementation project(path: ':boat')
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
