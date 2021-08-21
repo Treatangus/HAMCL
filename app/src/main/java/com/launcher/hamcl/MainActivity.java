@@ -54,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FragmentTransaction HomepageTransaction;//fragment事务
     private FragmentManager HomepagerManager;//fragment管理者
 
-    //private HashMap<Integer, Integer> HomepageMap;
-    //public int Homepageline;
-    public Object[] Homepageline;
+    private HashMap<Integer, Integer> HomepageUIMap;
+    public int Homepageline;
     private HashMap<Integer, String> ToolbarStringMap;//fragment管理者
 
     @Override
@@ -104,16 +103,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void HomepageMap() {
-        /*HomepageMap = new HashMap<Integer,Integer>();
-        HomepageMap.put(0,0);
-        HomepageMap.put(1,0);
-        HomepageMap.put(2,0);
-        HomepageMap.put(3,0);
-        HomepageMap.put(4,0);
-        HomepageMap.put(5,0);
-        HomepageMap.put(6,0);
+        HomepageUIMap = new HashMap<Integer,Integer>();
+        HomepageUIMap.put(0,0);
+        HomepageUIMap.put(1,0);
+        HomepageUIMap.put(2,0);
+        HomepageUIMap.put(3,0);
+        HomepageUIMap.put(4,0);
+        HomepageUIMap.put(5,0);
+        HomepageUIMap.put(6,0);
         //map.put(目前值,上一级值);
-        HomepageMap.put(203,2);*/
+        HomepageUIMap.put(203,2);
 
         ToolbarStringMap = new HashMap<Integer,String>();
         ToolbarStringMap.put(0,getString(R.string.home_title_homepage));
@@ -125,31 +124,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ToolbarStringMap.put(4,getString(R.string.fb_launcher_settings));
         ToolbarStringMap.put(203,getString(R.string.home_title_game_setting));
 
-        Homepageline = new Object[]{0};
-        setHomepageClick(0);
-
-        //Homepageline=0;
-        //setHomepageClick(Homepageline);
+        Homepageline=0;
+        setHomepageClick(Homepageline);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.toolbar_button_backspace:
-                if(Homepageline.length==1){
-
-                }else{
-                    Homepageline = ReMoveArray(Homepageline);
-                    setHomepageClick(Homepageline[Homepageline.length-1]);
-                }
+                setHomepageClick(HomepageUIMap.get(Homepageline));
+                Homepageline=HomepageUIMap.get(Homepageline);
                 break;
             case R.id.toolbar_button_backhome:
-                if(Homepageline[Homepageline.length-1]==0){
-
-                }else{
-                    setHomepageClick(0);
-                    Homepageline = AddArray(Homepageline,0);
-                }
+                setHomepageClick(0);
                 break;
             case R.id.toolbar_button_refresh:
                 refresh();
@@ -211,8 +198,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HomepageTransaction.setCustomAnimations(R.anim.layout_show,R.anim.layout_hide);
         //显示之前将所有的fragment都隐藏起来,在去显示我们想要显示的fragment
         hideHomepageFragment(HomepageTransaction);
-        main_text_showstate.setText(ToolbarStringMap.get(type));
-        //setToolbarTitle(HomepageStringMap.get(type));
+        setToolbarTitle(ToolbarStringMap.get(type));
         switch (type) {
             case 0://主页
                 //如果主页的fragment是null的话,就创建一个
@@ -345,71 +331,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 		if (setting_fragment != null) {
             fragmentTransaction.hide(setting_fragment);
         }*/
-    }
-
-    public Object[] AddArray(Object...parents , Object...childs){
-
-        Object[]cube=null;
-        try{
-            if(parents!=null){
-                cube=new Object[parents.length+childs.length];
-                if(parents.length!=0){
-                    System.arraycopy(
-                            parents
-                            , 0
-                            , cube
-                            , 0
-                            , parents.length);
-                    System.arraycopy(
-                            childs
-                            , 0
-                            , cube
-                            , parents.length
-                            , childs.length);
-
-
-                    return cube;
-                }
-            }else{
-                if(childs==null){
-                    return null;
-                }else{
-                    cube=new Object[childs.length];
-                    System.arraycopy(
-                            childs
-                            , 0
-                            , cube
-                            , 0
-                            , cube.length);
-                    return cube;
-                }
-            }
-
-        }catch(Exception e){
-            Log.e("addArray :",e.getMessage());
-        }
-
-
-        return cube;
-    }
-    public Object[] ReMoveArray(Object[]parents){
-        Object[]cube=new Object[0];
-        try{
-            cube=new Object[parents.length-1];
-            System.arraycopy(
-                    parents
-                    , 0
-                    , cube
-                    , 0
-                    , parents.length-1);
-
-
-            return cube;
-
-        }catch(Exception e){
-            Log.e("removeArray :",e.getMessage());
-        }
-        return cube;
     }
 
     public void setToolbarTitle(String s)
