@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
@@ -81,13 +82,14 @@ public class VersionAdapter extends BaseAdapter {
         if (madapter == null) {
             madapter = (View) mInflater.inflate(R.layout.adapter_version, null);
             viewh = new ViewHolder();
-            viewh.item_version_ll=(LinearLayout)madapter.findViewById(R.id.item_version_ll);
-            viewh.rb_choose_version=(RadioButton)madapter.findViewById(R.id.rb_choose_version);
-            viewh.iv_version_icon=(ImageView)madapter.findViewById(R.id.iv_version_icon);
-            viewh.menu_setting=(Toolbar)madapter.findViewById(R.id.menu_setting);
+            viewh.item_version_ll = (LinearLayout)madapter.findViewById(R.id.item_version_ll);
+            viewh.rb_choose_version = (RadioButton)madapter.findViewById(R.id.rb_choose_version);
+            viewh.iv_version_icon = (ImageView)madapter.findViewById(R.id.iv_version_icon);
+            viewh.iv_test_games = (ImageButton) madapter.findViewById(R.id.iv_test_games);
+            viewh.menu_setting = (Toolbar)madapter.findViewById(R.id.menu_setting);
             viewh.menu_setting.setId(arg0);
-            viewh.tv_version_title=(TextView)madapter.findViewById(R.id.tv_version_title);
-            viewh.tv_about_version=(TextView)madapter.findViewById(R.id.tv_about_version);
+            viewh.tv_version_title = (TextView)madapter.findViewById(R.id.tv_version_title);
+            viewh.tv_about_version = (TextView)madapter.findViewById(R.id.tv_about_version);
 
             viewh.rb_choose_version.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -103,7 +105,15 @@ public class VersionAdapter extends BaseAdapter {
                     } catch (Exception e) {
                         //Toast(e.toString());
                     }
-                }});
+                }
+            });
+
+            viewh.iv_test_games.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                }
+            });
 						/*if(!viewh.checkbox.isChecked()){
 							setSelectIndex(index);
 						}
@@ -223,8 +233,6 @@ public class VersionAdapter extends BaseAdapter {
 
         }
 
-
-        
         if(mChecked.get(arg0)){
 
             viewh.rb_choose_version.setChecked(true);
@@ -234,6 +242,7 @@ public class VersionAdapter extends BaseAdapter {
         }
 
         viewh.iv_version_icon.setImageResource(R.drawable.grass);
+        viewh.iv_test_games.setImageResource(R.drawable.ic_send_black);
         viewh.tv_version_title.setText(coll.get(arg0).getVersionName ());
         viewh.tv_about_version.setText(coll.get(arg0).getVersionId ());
         //to strong
@@ -247,6 +256,7 @@ public class VersionAdapter extends BaseAdapter {
         public LinearLayout item_version_ll;
         public RadioButton rb_choose_version;
         public ImageView iv_version_icon;
+        public ImageButton iv_test_games;
         public Toolbar menu_setting;
         public TextView tv_version_title;
         public TextView tv_about_version;

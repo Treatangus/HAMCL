@@ -8,10 +8,9 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="5dp"
         android:layout_margin="5dp"
         android:elevation="5dp"
-        app:cardCornerRadius="2dp">
+        app:cardCornerRadius="4dp">
 
     <LinearLayout
         android:id="@+id/item_version_ll"
@@ -49,6 +48,7 @@
                 android:gravity="center_vertical"
                 android:layout_weight="1.0"
                 android:text="1.12.2"
+                android:textColor="@color/black_text"
                 android:textStyle="bold"
                 android:textSize="16sp" />
 
@@ -64,11 +64,19 @@
 
         </LinearLayout>
 
+        <ImageButton
+            android:id="@+id/iv_test_games"
+            android:layout_height="35dp"
+            android:layout_width="35dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:layout_centerVertical="true"
+            android:layout_margin="5dp"
+            android:layout_marginLeft="10dp"/>
+
         <Toolbar
             android:id="@+id/menu_setting"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_marginLeft="5dp" />
+            android:layout_width="wrap_content" />
 
     </LinearLayout>
 

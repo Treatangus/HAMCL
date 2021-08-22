@@ -39,8 +39,11 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
 
     private FloatingActionButton adduser_fabtn;
 
-    private TextInputEditText user_name_edit;
-    private TextInputEditText password_edit;
+    private TextInputEditText user_mojang_edit;
+    private TextInputEditText password_mojang_edit;
+
+    private TextInputEditText user_microsoft_edit;
+    private TextInputEditText password_microsoft_edit;
 
     private ListView users_lv;
 
@@ -96,9 +99,15 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
 
         final LinearLayoutCompat offline_mode = view.findViewById(R.id.offline_mode);
         final LinearLayoutCompat genuine_login = view.findViewById(R.id.genuine_login);
-        user_name_edit = view.findViewById(R.id.user_name_edit);
-        password_edit = view .findViewById(R.id.password_edit);
-        user_name_edit.addTextChangedListener(new TextWatcher(){
+        user_mojang_edit = view.findViewById(R.id.user_mojang_edit);
+        password_mojang_edit = view .findViewById(R.id.password_mojang_edit);
+
+        final LinearLayoutCompat microsoft_user = view.findViewById(R.id.microsoft_user);
+        final LinearLayoutCompat microsoft_password = view.findViewById(R.id.microsoft_password);
+        user_microsoft_edit = view.findViewById(R.id.user_microsoft_edit);
+        password_microsoft_edit = view .findViewById(R.id.password_microsoft_edit);
+
+        user_mojang_edit.addTextChangedListener(new TextWatcher(){
             @Override
             public void beforeTextChanged(CharSequence p1, int p2, int p3, int p4) {
             }
@@ -130,34 +139,57 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 switch (position){
                     case 0:
-                        if(genuine_login.getVisibility()== View.VISIBLE)
+                        if(genuine_login.getVisibility() == View.VISIBLE)
                         {
                             genuine_login.setVisibility(View.GONE);
                             offline_mode.setVisibility( View.VISIBLE);
+                            microsoft_user.setVisibility(View.GONE);
+                            microsoft_password.setVisibility(View.GONE);
                         }
-                        else if(genuine_login.getVisibility()== View.GONE)
+                        else if(genuine_login.getVisibility() == View.GONE)
                         {
                             genuine_login.setVisibility(View.GONE);
                             offline_mode.setVisibility( View.VISIBLE);
+                            microsoft_user.setVisibility(View.GONE);
+                            microsoft_password.setVisibility(View.GONE);
                         }
                         Toast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
-                        if(offline_mode.getVisibility()== View.VISIBLE)
+                        if(offline_mode.getVisibility() == View.VISIBLE)
                         {
                             offline_mode.setVisibility(View.VISIBLE);
                             genuine_login.setVisibility( View.VISIBLE);
+                            microsoft_user.setVisibility(View.GONE);
+                            microsoft_password.setVisibility(View.GONE);
                         }
-                        else if(offline_mode.getVisibility()== View.GONE)
+                        else if(offline_mode.getVisibility() == View.GONE)
                         {
                             offline_mode.setVisibility(View.VISIBLE);
                             genuine_login.setVisibility( View.VISIBLE);
+                            microsoft_user.setVisibility(View.GONE);
+                            microsoft_password.setVisibility(View.GONE);
                         }
                         Toast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
+                        microsoft_user.setVisibility(View.VISIBLE);
+                        microsoft_password.setVisibility(View.VISIBLE);
                         offline_mode.setVisibility(View.GONE);
                         genuine_login.setVisibility( View.GONE);
+                        /*if(offline_mode.getVisibility() == View.VISIBLE||offline_mode.getVisibility() == View.VISIBLE||
+                                microsoft_account_ll.getVisibility() == View.VISIBLE) {
+                            microsoft_account_ll.setVisibility(View.VISIBLE);
+                            offline_mode.setVisibility(View.GONE);
+                            genuine_login.setVisibility( View.GONE);
+                        }
+                        else if(offline_mode.getVisibility() == View.GONE||genuine_login.getVisibility() == View.GONE||
+                                microsoft_account_ll.getVisibility() == View.GONE)
+                        {
+                            microsoft_account_ll.setVisibility(View.VISIBLE);
+                            offline_mode.setVisibility(View.GONE);
+                            genuine_login.setVisibility( View.GONE);
+                        }*/
                         Toast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT).show();
                         break;
                 }
@@ -187,7 +219,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                 } else if(offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.VISIBLE){
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "登录中", Toast.LENGTH_SHORT).show();
-                } else if(offline_mode.getVisibility() == View.GONE||genuine_login.getVisibility() == View.GONE){
+                } else if(microsoft_user.getVisibility() == View.VISIBLE||microsoft_password.getVisibility() == View.VISIBLE){
                     dialog.dismiss();
                     Toast.makeText(getActivity(), "微软登录中", Toast.LENGTH_SHORT).show();
                 }

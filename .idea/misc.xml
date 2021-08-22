@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_delete_black.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_export_black.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_folder_black.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_pencil_black.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_send_black.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_setting_black.xml" value="0.1712962962962963" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.1646403242147923" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.2" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/dialog_create_user.xml" value="0.22" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_functionbar.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_games_list.xml" value="0.25" />

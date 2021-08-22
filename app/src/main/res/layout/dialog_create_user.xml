@@ -96,13 +96,13 @@
 							android:layout_marginRight="20dp">
 
 							<com.google.android.material.textfield.TextInputEditText
-								android:id="@+id/user_name_edit"
+								android:id="@+id/user_mojang_edit"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone|time"
 								android:textStyle="bold"
 								android:textSize="@dimen/font_14"
-								android:hint="@string/user_fill_account"
+								android:hint="@string/user_mojang_account"
 								android:singleLine="true" />
 
 						</com.google.android.material.textfield.TextInputLayout>
@@ -133,13 +133,85 @@
 							app:passwordToggleEnabled="true">
 
 							<com.google.android.material.textfield.TextInputEditText
-								android:id="@+id/password_edit"
+								android:id="@+id/password_mojang_edit"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:inputType="textPassword"
 								android:textStyle="bold"
 								android:textSize="@dimen/font_14"
-								android:hint="@string/user_fill_password"
+								android:hint="@string/user_mojang_password"
+								android:singleLine="true" />
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+					</androidx.appcompat.widget.LinearLayoutCompat>
+
+					<androidx.appcompat.widget.LinearLayoutCompat
+						android:id="@+id/microsoft_user"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:visibility="gone">
+
+						<androidx.appcompat.widget.AppCompatTextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="@dimen/font_15"
+							android:textColor="@color/black_text"
+							android:layout_gravity="center"
+							android:text="@string/user_account_name" />
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="40dp"
+							android:layout_marginRight="20dp">
+
+							<com.google.android.material.textfield.TextInputEditText
+								android:id="@+id/user_microsoft_edit"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone|time"
+								android:textStyle="bold"
+								android:textSize="@dimen/font_14"
+								android:hint="@string/user_microsoft_account"
+								android:singleLine="true" />
+
+						</com.google.android.material.textfield.TextInputLayout>
+
+					</androidx.appcompat.widget.LinearLayoutCompat>
+
+					<androidx.appcompat.widget.LinearLayoutCompat
+						android:id="@+id/microsoft_password"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						android:layout_marginTop="10dp"
+						android:visibility="gone">
+
+						<androidx.appcompat.widget.AppCompatTextView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:textSize="@dimen/font_15"
+							android:textColor="@color/black_text"
+							android:layout_gravity="center"
+							android:text="@string/user_password" />
+
+						<com.google.android.material.textfield.TextInputLayout
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginLeft="52dp"
+							android:layout_marginRight="20dp"
+							app:passwordToggleEnabled="true">
+
+							<com.google.android.material.textfield.TextInputEditText
+								android:id="@+id/password_microsoft_edit"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:inputType="textPassword"
+								android:textStyle="bold"
+								android:textSize="@dimen/font_14"
+								android:hint="@string/user_microsoft_password"
 								android:singleLine="true" />
 
 						</com.google.android.material.textfield.TextInputLayout>

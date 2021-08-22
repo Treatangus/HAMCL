@@ -30,9 +30,11 @@
     <string name="user_new_account">新建账户</string>
     <string name="user_login_mode">登录方式</string>
     <string name="user_account_name">用户名</string>
-    <string name="user_fill_account">注:在此填写您的账户!</string>
+    <string name="user_mojang_account">注:在此填写您的Mojang账户!</string>
+    <string name="user_microsoft_account">注:在此填写您的Microsoft账户!</string>
     <string name="user_password">密码</string>
-    <string name="user_fill_password">注:在此填写您的密码!</string>
+    <string name="user_mojang_password">注:在此填写您的Mojang密码!</string>
+    <string name="user_microsoft_password">注:在此填写您的Microsoft密码!</string>
     <string name="user_cancel">取消</string>
     <string name="user_determine">确定</string>
 
