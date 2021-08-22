@@ -1,6 +1,7 @@
 package com.launcher.hamcl;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -26,11 +27,17 @@ import com.launcher.hamcl.uis.homepage.GamesListFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
+import com.tbruyelle.rxpermissions2.Permission;
+import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.HashMap;
 import java.util.Objects;
 
+import io.reactivex.functions.Consumer;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+
+    private RxPermissions rxPermissions;
 
     public SettingManager settingManager;
     public SettingModel settingModel;
@@ -66,6 +73,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         getSupportActionBar();
+
+        rxPermissions = new RxPermissions (this);
 
         requestPermission();
         initSetting();
@@ -363,7 +372,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void requestPermission() {
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
+        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
+
+        rxPermissions.requestEach (permissions).subscribe (new Consumer<Permission> () {
+            @SuppressLint("CheckResult")
+            @Override
+            public void accept (Permission permission) throws Exception {
+                if (permission.granted){
+
+                }else if (permission.shouldShowRequestPermissionRationale){
+                    Toast.makeText ( MainActivity.this,"没有必要权限无法运行，请给予HAMCL权限",Toast.LENGTH_LONG).show ();
+                    requestPermission ();
+                }else {
+                    Toast.makeText ( MainActivity.this,"没有必要权限无法运行，请在设置中手动给予HAMCL权限",Toast.LENGTH_LONG).show ();
+                }
+            }
+        });
+
+ /*       if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
 
             Toast.makeText(this, "申请权限", Toast.LENGTH_SHORT).show();
@@ -373,6 +399,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
 
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-        }
+        }*/
     }
 }

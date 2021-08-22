@@ -1,5 +1,6 @@
 package com.launcher.hamcl.uis.homepage;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.os.Bundle;
 
@@ -20,6 +21,7 @@ import android.widget.Toast;
 import com.launcher.hamcl.MainActivity;
 import com.launcher.hamcl.R;
 import com.launcher.hamcl.adapter.VersionAdapter;
+import com.launcher.hamcl.data.GameVersionData;
 import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
@@ -54,7 +56,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     private MainActivity parents;
     private FragmentTransaction HomepageTransaction;
 
-    private List<String> data;
+    private List<GameVersionData> data;
 
     @Nullable
     @Override
@@ -109,16 +111,6 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
 
     private void gameslist() {
         setdata();
-        List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
-        //for(String targetFile:files)
-        //for(int i = 0; i < 12; i++)
-        {
-            Map<String, Object> map = new HashMap<String, Object>();
-            map.put("version", data);
-            map.put("id", "1." + ".1");
-            //补充-可用其他数据数组来替代listItems
-            listItems.add(map);
-        }
 
         versionFileListView.setOnPullListener(new PullListView.OnPullListener() {
             @Override
@@ -132,7 +124,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        VersionAdapter adapter = new VersionAdapter(getActivity(), listItems); //传入数据-同上
+        VersionAdapter adapter = new VersionAdapter(getActivity(), data); //传入数据-同上
         adapter.setOnItemDepartment(new VersionAdapter.OnItemDepartment() {
 
             @Override
@@ -176,13 +168,18 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     private void setdata() {
         try {
             String[] f =new File(dirs().toString() + "/versions/").list();
-            data = new ArrayList<String>();
+
+            data = new ArrayList<GameVersionData>();
             if (new File(dirs().toString() +"/versions/").exists()) {
-                for (String a : f) {
-                    data.add(a);
+               for (String a : f) {
+                   GameVersionData gameVersionData = new GameVersionData ();
+                   gameVersionData.setVersionId ("id显示在这-"+a);
+                   gameVersionData.setVersionName (a);
+                    data.add(gameVersionData);
                 }
+
             } else {
-                data.add("null");
+               // data.add("null");
             }
         } catch (Exception e) {
             System.out.println(e);
@@ -226,8 +223,9 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
         }
     }
 
+    @SuppressLint("SdCardPath")
     public String dirs() {
-        try {
+        /*try {
             FileInputStream in=new FileInputStream("/sdcard/games/com.explore.launcher/config.txt");
             byte[] b=new byte[in.available()];
             in.read(b);
@@ -237,7 +235,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
             return json.getString("game_directory");
         } catch (Exception e) {
             System.out.println(e);
-        }
-        return "Error";
+        }*/
+        return "/sdcard/games/com.explore.launcher/";
     }
 }

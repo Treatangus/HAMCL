@@ -1,6 +1,7 @@
 package com.launcher.hamcl.adapter;
 
 import com.launcher.hamcl.R;
+import com.launcher.hamcl.data.GameVersionData;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,7 +25,7 @@ import java.util.Map;
 
 public class VersionAdapter extends BaseAdapter {
 
-    private List<Map<String, Object>> coll;
+    private List<GameVersionData> coll;
     private Context ctx;
 
     List<Boolean> mChecked;
@@ -38,7 +39,7 @@ public class VersionAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
 
-    public VersionAdapter(Context context,  List<Map<String, Object>> coll ) {
+    public VersionAdapter(Context context,  List<GameVersionData> coll ) {
 
         this.ctx = context;
         this.coll = coll;
@@ -158,8 +159,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_test_the_game://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -168,8 +168,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_game_manage://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -178,8 +177,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_rename_this_version://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -188,8 +186,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_delete_version://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -198,8 +195,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_derive_package://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -208,8 +204,7 @@ public class VersionAdapter extends BaseAdapter {
                             case R.id.item_game_folder://上文ID
                                 try{
                                     listener.OnItemDepartmentItem("这是数列:"+viewh.menu_setting.getId()
-                                            +"项:"+coll.get(viewh.menu_setting.getId()
-                                    ).get("id").toString());
+                                            +"项:");
                                 }catch(Exception e){
                                     //过滤错误
                                 }
@@ -237,8 +232,8 @@ public class VersionAdapter extends BaseAdapter {
         }
 
         viewh.iv_version_icon.setImageResource(R.drawable.grass);
-        viewh.tv_version_title.setText(coll.get(arg0).get("version").toString());
-        viewh.tv_about_version.setText(coll.get(arg0).get("id").toString());
+        viewh.tv_version_title.setText(coll.get(arg0).getVersionName ());
+        viewh.tv_about_version.setText(coll.get(arg0).getVersionId ());
         //to strong
 
         viewMap.put(arg0, madapter);
