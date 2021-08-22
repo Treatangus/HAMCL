@@ -179,6 +179,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
                 }
 
 
+
             } else {
                // data.add("null");
             }
