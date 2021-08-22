@@ -5,6 +5,7 @@ public class GameVersionData {
     private String versionId;
 
     public String getVersionName () {
+
         return versionName;
     }
 

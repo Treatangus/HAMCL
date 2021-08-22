@@ -223,6 +223,7 @@ public class VersionAdapter extends BaseAdapter {
 
         }
 
+
         if(mChecked.get(arg0)){
 
             viewh.rb_choose_version.setChecked(true);
