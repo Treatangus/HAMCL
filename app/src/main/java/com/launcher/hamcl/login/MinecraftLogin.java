@@ -18,7 +18,7 @@ public class MinecraftLogin {
         if (minecraftAuthenticator == null){
             minecraftAuthenticator = new MinecraftAuthenticator (loginInterface);
         }
-        MinecraftToken minecraftToken = minecraftAuthenticator.loginWithXbox (username, password);
+        MinecraftToken minecraftToken = minecraftAuthenticator.login (username, password);
         return minecraftAuthenticator.checkOwnership (minecraftToken);
     }
 }
