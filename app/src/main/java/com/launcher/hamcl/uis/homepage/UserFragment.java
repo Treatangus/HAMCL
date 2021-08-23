@@ -25,6 +25,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.launcher.hamcl.MainActivity;
 import com.launcher.hamcl.R;
+import com.launcher.hamcl.login.MinecraftLogin;
 import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
@@ -156,7 +157,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             microsoft_user.setVisibility(View.GONE);
                             microsoft_password.setVisibility(View.GONE);
                         }
-                        MaterialDesignToast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
+                      //  MaterialDesignToast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                     case 1:
                         if(offline_mode.getVisibility() == View.VISIBLE)
@@ -173,7 +174,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             microsoft_user.setVisibility(View.GONE);
                             microsoft_password.setVisibility(View.GONE);
                         }
-                        MaterialDesignToast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
+                       // MaterialDesignToast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                     case 2:
                         microsoft_user.setVisibility(View.VISIBLE);
@@ -193,7 +194,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             offline_mode.setVisibility(View.GONE);
                             genuine_login.setVisibility( View.GONE);
                         }*/
-                        MaterialDesignToast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
+                       // MaterialDesignToast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                 }
             }
@@ -215,16 +216,34 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
         btn_agree_high_opion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.GONE) {
+                if(sp_login_mode.getSelectedItemId () == 0/*offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.GONE*/) {
                     //settingManager.saveConfigToFile(configModel);
-                    dialog.dismiss();
-                    Toast.makeText(getActivity(), "创建成功", Toast.LENGTH_SHORT).show();
-                } else if(offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.VISIBLE){
-                    dialog.dismiss();
-                    Toast.makeText(getActivity(), "登录中", Toast.LENGTH_SHORT).show();
-                } else if(microsoft_user.getVisibility() == View.VISIBLE||microsoft_password.getVisibility() == View.VISIBLE){
-                    dialog.dismiss();
-                    Toast.makeText(getActivity(), "微软登录中", Toast.LENGTH_SHORT).show();
+                    if (!user_microsoft_edit.getText ().toString ().equals ("")) {
+                        dialog.dismiss ();
+                        MaterialDesignToast.makeText (getActivity (), "创建成功", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_INFO).show ();
+                    }else {
+                        MaterialDesignToast.makeText (getContext (),"请输入用户名！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                    }
+
+                } else if(sp_login_mode.getSelectedItemId () == 1/*offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.VISIBLE*/){
+
+                    if (!user_mojang_edit.getText ().toString ().equals ("")&&!password_mojang_edit.getText ().toString ().equals ("")) {
+                        dialog.dismiss ();
+                        MaterialDesignToast.makeText (getActivity (), "登录Mojang中", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_INFO).show ();
+                        MinecraftLogin.loginWithMojang (user_mojang_edit.getText ().toString (),password_mojang_edit.getText ().toString (),UserFragment.this);
+                    }else {
+                        MaterialDesignToast.makeText (getContext (),"请将信息输入完整！！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                    }
+
+                } else if(sp_login_mode.getSelectedItemId () == 2/*microsoft_user.getVisibility() == View.VISIBLE||microsoft_password.getVisibility() == View.VISIBLE*/){
+                    if (!user_microsoft_edit.getText ().toString ().equals ("")&&!password_microsoft_edit.getText ().toString ().equals ("")) {
+                        dialog.dismiss ();
+                        MaterialDesignToast.makeText (getActivity (), "登录Microsoft中", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_INFO).show ();
+                        MinecraftLogin.loginWithMicrosoft (user_microsoft_edit.getText ().toString (),password_microsoft_edit.getText ().toString (),UserFragment.this);
+
+                    }else {
+                        MaterialDesignToast.makeText (getContext (),"请将信息输入完整！！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                    }
                 }
             }
         });
@@ -237,10 +256,12 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
     @Override
     public void onConnectSuccess () {
         //登录连接成功
+        MaterialDesignToast.makeText (getContext (),"登录成功！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_SUCCESS).show ();
     }
 
     @Override
     public void onConnectFail () {
     //登录/连接失败
+        MaterialDesignToast.makeText (getContext (),"登录失败！请检查账号密码或网络连接",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_ERROR).show ();
     }
 }

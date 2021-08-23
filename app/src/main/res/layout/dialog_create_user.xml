@@ -13,9 +13,9 @@
 		android:layout_height="wrap_content"
 		android:orientation="vertical">
 
-	      <ScrollView
+	      <androidx.core.widget.NestedScrollView
 			android:layout_width="match_parent"
-			android:layout_height="wrap_content"
+			android:layout_height="match_parent"
 			android:scrollbars="none">
 
 			<androidx.appcompat.widget.LinearLayoutCompat
@@ -216,43 +216,48 @@
 
 						</com.google.android.material.textfield.TextInputLayout>
 
+
 					</androidx.appcompat.widget.LinearLayoutCompat>
 
 				</androidx.appcompat.widget.LinearLayoutCompat>
 
+				<RelativeLayout
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:orientation="horizontal"
+					android:layout_marginTop="5dp">
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btn_cancel_high_opion"
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_alignParentRight="true"
+						android:textColor="@color/black_text"
+						android:layout_marginRight="17dp"
+						android:gravity="center"
+						android:text="@string/user_cancel"
+						android:textSize="@dimen/font_14"
+						android:theme="@style/Theme.HAMCL" />
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/btn_agree_high_opion"
+						style="@style/Widget.MaterialComponents.Button.TextButton"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginRight="3dp"
+						android:layout_toLeftOf="@+id/btn_cancel_high_opion"
+						android:gravity="center"
+						android:text="@string/user_determine"
+						android:textSize="@dimen/font_14"
+						android:theme="@style/Theme.HAMCL" />
+
+				</RelativeLayout>
+
 			</androidx.appcompat.widget.LinearLayoutCompat>
 
-		</ScrollView>
+		</androidx.core.widget.NestedScrollView>
 
-		<RelativeLayout
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:orientation="horizontal"
-			android:layout_marginTop="5dp">
-
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/btn_cancel_high_opion"
-				style="@style/Widget.MaterialComponents.Button.TextButton"
-				android:theme="@style/Theme.HAMCL"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/user_cancel"
-				android:textSize="@dimen/font_14"
-				android:layout_alignParentRight="true" />
-
-			<com.google.android.material.button.MaterialButton
-				android:id="@+id/btn_agree_high_opion"
-				style="@style/Widget.MaterialComponents.Button.TextButton"
-				android:theme="@style/Theme.HAMCL"
-				android:layout_width="wrap_content"
-				android:layout_height="wrap_content"
-				android:gravity="center"
-				android:text="@string/user_determine"
-				android:textSize="@dimen/font_14"
-				android:layout_toLeftOf="@+id/btn_cancel_high_opion" />
-
-		</RelativeLayout>
 
 	</androidx.appcompat.widget.LinearLayoutCompat>
 
