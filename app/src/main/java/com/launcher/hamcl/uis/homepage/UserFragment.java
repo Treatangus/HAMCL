@@ -30,6 +30,7 @@ import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.UICallbacks;
 import com.launcher.hamcl.utils.ScreenUtils;
+import com.launcher.hamcl.widget.MaterialDesignToast;
 
 public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks {
 
@@ -153,7 +154,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             microsoft_user.setVisibility(View.GONE);
                             microsoft_password.setVisibility(View.GONE);
                         }
-                        Toast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT).show();
+                        MaterialDesignToast.makeText(getActivity(), "离线模式", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                     case 1:
                         if(offline_mode.getVisibility() == View.VISIBLE)
@@ -170,7 +171,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             microsoft_user.setVisibility(View.GONE);
                             microsoft_password.setVisibility(View.GONE);
                         }
-                        Toast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT).show();
+                        MaterialDesignToast.makeText(getActivity(), "正版登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                     case 2:
                         microsoft_user.setVisibility(View.VISIBLE);
@@ -190,7 +191,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                             offline_mode.setVisibility(View.GONE);
                             genuine_login.setVisibility( View.GONE);
                         }*/
-                        Toast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT).show();
+                        MaterialDesignToast.makeText(getActivity(), "微软登录", Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
                         break;
                 }
             }

@@ -177,9 +177,6 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
                    gameVersionData.setVersionName (a);
                     data.add(gameVersionData);
                 }
-
-
-
             } else {
                // data.add("null");
             }
