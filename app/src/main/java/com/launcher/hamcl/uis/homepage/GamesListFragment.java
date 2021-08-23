@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -20,8 +19,8 @@ import android.widget.Toast;
 
 import com.launcher.hamcl.MainActivity;
 import com.launcher.hamcl.R;
-import com.launcher.hamcl.adapter.VersionAdapter;
-import com.launcher.hamcl.data.GameVersionData;
+import com.launcher.hamcl.version.LocalVersionListAdapter;
+import com.launcher.hamcl.version.LocalVersionListBean;
 import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
@@ -34,9 +33,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class GamesListFragment extends Fragment implements View.OnClickListener , UICallbacks {
 
@@ -56,7 +53,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     private MainActivity parents;
     private FragmentTransaction HomepageTransaction;
 
-    private List<GameVersionData> data;
+    private List<LocalVersionListBean> data;
 
     @Nullable
     @Override
@@ -124,8 +121,8 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
             }
         });
 
-        VersionAdapter adapter = new VersionAdapter(getActivity(), data); //传入数据-同上
-        adapter.setOnItemDepartment(new VersionAdapter.OnItemDepartment() {
+        LocalVersionListAdapter adapter = new LocalVersionListAdapter(getActivity(), data); //传入数据-同上
+        adapter.setOnItemDepartment(new LocalVersionListAdapter.OnItemDepartment() {
 
             @Override
             public void OnItemDepartmentItem(String plot_id, ImageView department_select) {
@@ -169,10 +166,10 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
         try {
             String[] f =new File(dirs().toString() + "/versions/").list();
 
-            data = new ArrayList<GameVersionData>();
+            data = new ArrayList<LocalVersionListBean>();
             if (new File(dirs().toString() +"/versions/").exists()) {
                for (String a : f) {
-                   GameVersionData gameVersionData = new GameVersionData ();
+                   LocalVersionListBean gameVersionData = new LocalVersionListBean();
                    gameVersionData.setVersionId ("id显示在这-"+a);
                    gameVersionData.setVersionName (a);
                     data.add(gameVersionData);

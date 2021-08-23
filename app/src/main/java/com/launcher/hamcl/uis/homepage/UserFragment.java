@@ -122,7 +122,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
 
             @Override
             public void afterTextChanged(Editable p1) {
-               // configModel.setauth_player_name(p1.toString());
+                configModel.setauth_player_name(p1.toString());
             }
         });
         //user_name_edit.setText(configModel.getauth_player_name());
@@ -218,7 +218,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
             public void onClick(View v) {
                 if(sp_login_mode.getSelectedItemId () == 0/*offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.GONE*/) {
                     //settingManager.saveConfigToFile(configModel);
-                    if (!user_mojang_edit.getText ().toString ().equals ("")) {
+                    if (!user_microsoft_edit.getText ().toString ().equals ("")) {
                         dialog.dismiss ();
                         MaterialDesignToast.makeText (getActivity (), "创建成功", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_INFO).show ();
                     }else {

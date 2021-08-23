@@ -1,6 +1,6 @@
-package com.launcher.hamcl.data;
+package com.launcher.hamcl.version;
 
-public class GameVersionData {
+public class LocalVersionListBean {
     private String versionName;
     private String versionId;
 

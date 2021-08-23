@@ -1,7 +1,6 @@
-package com.launcher.hamcl.adapter;
+package com.launcher.hamcl.version;
 
 import com.launcher.hamcl.R;
-import com.launcher.hamcl.data.GameVersionData;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -24,9 +23,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class VersionAdapter extends BaseAdapter {
+public class LocalVersionListAdapter extends BaseAdapter {
 
-    private List<GameVersionData> coll;
+    private List<LocalVersionListBean> coll;
     private Context ctx;
 
     List<Boolean> mChecked;
@@ -40,7 +39,7 @@ public class VersionAdapter extends BaseAdapter {
 
     private LayoutInflater mInflater;
 
-    public VersionAdapter(Context context,  List<GameVersionData> coll ) {
+    public LocalVersionListAdapter(Context context, List<LocalVersionListBean> coll ) {
 
         this.ctx = context;
         this.coll = coll;
