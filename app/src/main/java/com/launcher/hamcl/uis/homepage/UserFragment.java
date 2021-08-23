@@ -32,7 +32,9 @@ import com.launcher.hamcl.uis.UICallbacks;
 import com.launcher.hamcl.utils.ScreenUtils;
 import com.launcher.hamcl.widget.MaterialDesignToast;
 
-public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks {
+import me.ratsiel.auth.model.mojang.LoginInterface;
+
+public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks, LoginInterface {
 
     private SettingManager settingManager;
     private SettingModel settingModel;
@@ -230,5 +232,15 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
         dialog.show();
         //此处设置位置窗体大小，我这里设置为了手机屏幕宽度的3/4  注意一定要在show方法调用后再写设置窗口大小的代码，否则不起效果会
         dialog.getWindow().setLayout((ScreenUtils.getScreenWidth(getActivity())/6*4),/*ScreenUtils.getScreenHeight(getActivity())/4*3);*/ LinearLayout.LayoutParams.WRAP_CONTENT);
+    }
+
+    @Override
+    public void onConnectSuccess () {
+        //登录连接成功
+    }
+
+    @Override
+    public void onConnectFail () {
+    //登录/连接失败
     }
 }
