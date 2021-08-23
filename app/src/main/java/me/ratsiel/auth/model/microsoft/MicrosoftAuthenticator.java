@@ -2,6 +2,7 @@ package me.ratsiel.auth.model.microsoft;
 
 import me.ratsiel.auth.abstracts.Authenticator;
 import me.ratsiel.auth.abstracts.exception.AuthenticationException;
+import me.ratsiel.auth.model.mojang.MinecraftAuthenticator;
 import me.ratsiel.json.model.JsonArray;
 import me.ratsiel.json.model.JsonObject;
 import me.ratsiel.json.model.JsonString;
@@ -50,7 +51,7 @@ public class MicrosoftAuthenticator extends Authenticator<XboxToken> {
 
             loginCookie = httpURLConnection.getHeaderField("set-cookie");
 
-            String responseData = new BufferedReader(new InputStreamReader(inputStream)).lines().collect(Collectors.joining());
+            String responseData =new String( MinecraftAuthenticator.read (inputStream));//new BufferedReader(new InputStreamReader(inputStream)).lines().collect(Collectors.joining());
             Matcher bodyMatcher = Pattern.compile("sFTTag:[ ]?'.*value=\"(.*)\"/>'").matcher(responseData);
             if (bodyMatcher.find()) {
                 loginPPFT = bodyMatcher.group(1);
@@ -165,7 +166,7 @@ public class MicrosoftAuthenticator extends Authenticator<XboxToken> {
             arguments.put("redirect_uri", "https://login.live.com/oauth20_desktop.srf");
             arguments.put("scope", scopeUrl);
 
-            StringJoiner argumentBuilder = new StringJoiner("&");
+            StringJoinerFixed argumentBuilder = new StringJoinerFixed ("&");
             for (Map.Entry<String, String> entry : arguments.entrySet()) {
                 argumentBuilder.add(encodeURL(entry.getKey()) + "=" + encodeURL(entry.getValue()));
             }
@@ -275,15 +276,14 @@ public class MicrosoftAuthenticator extends Authenticator<XboxToken> {
      * @throws IOException the io exception
      */
     public JsonObject parseResponseData(HttpURLConnection httpURLConnection) throws IOException {
-        BufferedReader bufferedReader;
-
+        String lines;
         if (httpURLConnection.getResponseCode() != 200) {
-            bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
+            lines = new String (MinecraftAuthenticator. read (httpURLConnection.getErrorStream ()));
+            //  bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getErrorStream()));
         } else {
-            bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
+            lines = new String (MinecraftAuthenticator.read (httpURLConnection.getInputStream ()));
+            //  bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
         }
-        String lines = bufferedReader.lines().collect(Collectors.joining());
-
         JsonObject jsonObject = json.fromJsonString(lines, JsonObject.class);
         if (jsonObject.has("error")) {
             throw new AuthenticationException(jsonObject.get("error") + ": " + jsonObject.get("error_description"));
