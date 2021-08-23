@@ -27,6 +27,7 @@ import com.launcher.hamcl.uis.homepage.GamesListFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
+import com.launcher.hamcl.widget.MaterialDesignToast;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
@@ -374,7 +375,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void requestPermission() {
 
-        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
+        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.INTERNET};
 
         rxPermissions.requestEach (permissions).subscribe (new Consumer<Permission> () {
             @SuppressLint("CheckResult")
@@ -383,10 +384,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 if (permission.granted){
 
                 }else if (permission.shouldShowRequestPermissionRationale){
-                    Toast.makeText ( MainActivity.this,"没有必要权限无法运行，请给予HAMCL权限",Toast.LENGTH_LONG).show ();
+                    MaterialDesignToast.makeText ( MainActivity.this,"没有必要权限无法运行，请给予HAMCL权限",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
                     requestPermission ();
                 }else {
-                    Toast.makeText ( MainActivity.this,"没有必要权限无法运行，请在设置中手动给予HAMCL权限",Toast.LENGTH_LONG).show ();
+                    MaterialDesignToast.makeText ( MainActivity.this,"没有必要权限无法运行，请在设置中手动给予HAMCL权限",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
                 }
             }
         });

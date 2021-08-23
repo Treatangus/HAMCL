@@ -122,7 +122,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
 
             @Override
             public void afterTextChanged(Editable p1) {
-                configModel.setauth_player_name(p1.toString());
+               // configModel.setauth_player_name(p1.toString());
             }
         });
         //user_name_edit.setText(configModel.getauth_player_name());
