@@ -11,14 +11,28 @@ public class MinecraftLogin {
         if (minecraftAuthenticator == null){
             minecraftAuthenticator = new MinecraftAuthenticator (loginInterface);
         }
-        MinecraftToken minecraftToken = minecraftAuthenticator.loginWithXbox (email, password);
-        return minecraftAuthenticator.checkOwnership (minecraftToken);
+        final MinecraftToken[] minecraftToken = new MinecraftToken[1];
+        new Thread (new Runnable () {
+            @Override
+            public void run () {
+               minecraftToken[0] = minecraftAuthenticator.loginWithXbox (email, password);
+
+            }
+        }).start ();
+        return minecraftAuthenticator.checkOwnership (minecraftToken[0]);
     }
     public static MinecraftProfile loginWithMojang(String username, String password, LoginInterface loginInterface){
         if (minecraftAuthenticator == null){
             minecraftAuthenticator = new MinecraftAuthenticator (loginInterface);
         }
-        MinecraftToken minecraftToken = minecraftAuthenticator.login (username, password);
-        return minecraftAuthenticator.checkOwnership (minecraftToken);
+        final MinecraftToken[] minecraftToken = new MinecraftToken[1];
+        new Thread (new Runnable () {
+            @Override
+            public void run () {
+                minecraftToken[0] = minecraftAuthenticator.login (username, password);
+
+            }
+        }).start ();
+        return minecraftAuthenticator.checkOwnership (minecraftToken[0]);
     }
 }

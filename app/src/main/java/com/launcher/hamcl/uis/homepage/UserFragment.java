@@ -256,12 +256,24 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
     @Override
     public void onConnectSuccess () {
         //登录连接成功
-        MaterialDesignToast.makeText (getContext (),"登录成功！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_SUCCESS).show ();
+        getActivity ().runOnUiThread (new Runnable () {
+            @Override
+            public void run () {
+                MaterialDesignToast.makeText (getContext (),"登录成功！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_SUCCESS).show ();
+            }
+        });
+
     }
 
     @Override
     public void onConnectFail () {
     //登录/连接失败
-        MaterialDesignToast.makeText (getContext (),"登录失败！请检查账号密码或网络连接",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_ERROR).show ();
+        getActivity ().runOnUiThread (new Runnable () {
+            @Override
+            public void run () {
+                MaterialDesignToast.makeText (getContext (),"登录失败！请检查账号密码或网络连接",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_ERROR).show ();
+            }
+        });
+
     }
 }
