@@ -4,7 +4,11 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -38,6 +42,7 @@ import io.reactivex.functions.Consumer;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    private static final int REQUEST_PERMISSION_CODE = 0;
     private RxPermissions rxPermissions;
 
     public SettingManager settingManager;
@@ -391,6 +396,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
             }
         });
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            // 适配android11读写权限
+            if (Environment.isExternalStorageManager()) {
+                //已获取android读写权限
+            } else {
+                MaterialDesignToast.makeText (this,"请给予管理全部文件的权限，否则无法运行",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_INFO).show ();
+                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData(Uri.parse("package:" + getPackageName()));
+                startActivityForResult(intent, REQUEST_PERMISSION_CODE);
+            }
+            return;
+        }
+
 
  /*       if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED ||
                 ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {

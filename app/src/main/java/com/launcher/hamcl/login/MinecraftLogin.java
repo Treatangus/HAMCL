@@ -7,7 +7,7 @@ import me.ratsiel.auth.model.mojang.profile.MinecraftProfile;
 
 public class MinecraftLogin {
     private static MinecraftAuthenticator minecraftAuthenticator;
-    public static MinecraftProfile loginWithMicrosoft(String email, String password,LoginInterface loginInterface){
+    public static void loginWithMicrosoft(String email, String password,LoginInterface loginInterface){
         if (minecraftAuthenticator == null){
             minecraftAuthenticator = new MinecraftAuthenticator (loginInterface);
         }
@@ -15,13 +15,13 @@ public class MinecraftLogin {
         new Thread (new Runnable () {
             @Override
             public void run () {
-               minecraftToken[0] = minecraftAuthenticator.loginWithXbox (email, password);
-
+                minecraftToken[0] = minecraftAuthenticator.loginWithXbox (email, password);
+                MinecraftProfile profile = minecraftAuthenticator.checkOwnership (minecraftToken[0]);
+                System.out.println (profile.getUuid ().toString ());
             }
         }).start ();
-        return minecraftAuthenticator.checkOwnership (minecraftToken[0]);
     }
-    public static MinecraftProfile loginWithMojang(String username, String password, LoginInterface loginInterface){
+    public static void loginWithMojang(String username, String password, LoginInterface loginInterface){
         if (minecraftAuthenticator == null){
             minecraftAuthenticator = new MinecraftAuthenticator (loginInterface);
         }
@@ -30,9 +30,10 @@ public class MinecraftLogin {
             @Override
             public void run () {
                 minecraftToken[0] = minecraftAuthenticator.login (username, password);
-
+                MinecraftProfile profile = minecraftAuthenticator.checkOwnership (minecraftToken[0]);
+                System.out.println (profile.getUuid ().toString ());
             }
         }).start ();
-        return minecraftAuthenticator.checkOwnership (minecraftToken[0]);
+       // return minecraftAuthenticator.checkOwnership (minecraftToken[0]);
     }
 }

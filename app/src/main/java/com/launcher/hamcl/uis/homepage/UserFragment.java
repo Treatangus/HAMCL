@@ -30,12 +30,21 @@ import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.UICallbacks;
+import com.launcher.hamcl.user.UserListAdapter;
+import com.launcher.hamcl.user.UserListBean;
 import com.launcher.hamcl.utils.ScreenUtils;
+import com.launcher.hamcl.views.PullListView;
 import com.launcher.hamcl.widget.MaterialDesignToast;
+import com.zuowu.utils.UserDataBaseBox;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import me.ratsiel.auth.model.mojang.LoginInterface;
 
 public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks, LoginInterface {
+
+    UserListAdapter userListAdapter;
 
     private SettingManager settingManager;
     private SettingModel settingModel;
@@ -49,15 +58,37 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
     private TextInputEditText user_microsoft_edit;
     private TextInputEditText password_microsoft_edit;
 
-    private ListView users_lv;
+    private PullListView users_lv;
 
+    private List<UserListBean> beans;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user,container,false);
 
         adduser_fabtn = (FloatingActionButton)view.findViewById(R.id.adduser_fabtn);
-        users_lv = (ListView)view.findViewById(R.id.users_lv);
+        users_lv = (PullListView) view.findViewById(R.id.users_lv);
+
+        UserDataBaseBox dataBaseBox = UserDataBaseBox.getInstance ();
+        beans = dataBaseBox.getUsers ("/sdcard/games/com.explore.launcher/users");
+
+       /* UserListBean bean = new UserListBean ();
+        bean.setUserPassword ("");
+        bean.setUserType (0);
+        bean.setUserNmae ("osjcos");
+
+        UserListBean bean1 = new UserListBean ();
+        bean1.setUserPassword ("");
+        bean1.setUserType (1);
+        bean1.setUserNmae ("oos");
+
+        beans = new ArrayList<UserListBean> ();*/
+      //  beans.add (bean);
+      //  beans.add (bean1);
+
+
+         userListAdapter = new UserListAdapter (getContext (),beans);
+        users_lv.setAdapter (userListAdapter);
 
         adduser_fabtn.setOnClickListener(this);
 
@@ -122,7 +153,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
 
             @Override
             public void afterTextChanged(Editable p1) {
-                configModel.setauth_player_name(p1.toString());
+               // configModel.setauth_player_name(p1.toString());
             }
         });
         //user_name_edit.setText(configModel.getauth_player_name());
@@ -218,9 +249,20 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
             public void onClick(View v) {
                 if(sp_login_mode.getSelectedItemId () == 0/*offline_mode.getVisibility() == View.VISIBLE||genuine_login.getVisibility() == View.GONE*/) {
                     //settingManager.saveConfigToFile(configModel);
-                    if (!user_microsoft_edit.getText ().toString ().equals ("")) {
-                        dialog.dismiss ();
-                        MaterialDesignToast.makeText (getActivity (), "创建成功", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_INFO).show ();
+                    if (!user_mojang_edit.getText ().toString ().equals ("")) {
+
+                      if(UserDataBaseBox.getInstance ().saveUserData (user_mojang_edit.getText ().toString (),0,"non"))
+                        {
+                            dialog.dismiss ();
+                            MaterialDesignToast.makeText (getActivity (), "创建成功", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_SUCCESS).show ();
+                            userListAdapter.notifyDataSetChanged ();
+                        }else {
+                          MaterialDesignToast.makeText (getActivity (),"用户已存在！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                      }
+                       // beans = UserDataBaseBox.getInstance ().getUsers ("/sdcard/games/com.explore.launcher/users");
+
+                      //  users_lv.setAdapter (new UserListAdapter (getActivity (),beans));
+                      //  users_lv.deferNotifyDataSetChanged ();
                     }else {
                         MaterialDesignToast.makeText (getContext (),"请输入用户名！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
                     }
