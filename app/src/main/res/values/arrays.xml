@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="arrays">
+    <string-array name="login_mode">
         <item>离线模式</item>
         <item>Mojang账户</item>
         <item>微软登录</item>
     </string-array>
 
     <string-array name="download_source">
-        <item>OFFICIAL</item>
-        <item>MCBBS</item>
-        <item>BMCLAPI</item>
+        <item>官方(OFFICIAL, https://launchermeta.mojang.com)</item>
+        <item>BMClAPI(bangbang93, https://bmclapi2.bangbang93.com)</item>
+        <item>我的世界中文论坛(MCBBS, https://download.mcbbs.net)</item>
     </string-array>
 </resources>

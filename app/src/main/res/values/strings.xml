@@ -52,6 +52,12 @@
     <string name="menu_derive_package">导出整合包</string>
     <string name="menu_games_folder">游戏文件夹</string>
 
+    <!--  =====================================Games_List===================================== -->
+    <string name="download_title">国内下载源由BMCLAPI和我的世界中文论坛(MCBBS)提供1高速下载服务。BMCLAPI是公益服，请赞助BMCLAPI以获得稳定高速的下载服务，点击此处查阅详细信息</string>
+    <string name="download_source">下载源</string>
+    <string name="download_release">稳定版</string>
+    <string name="download_snapshot">测试版</string>
+    <string name="download_old_beta">远古版</string>
 
     <string name="title_clear_log">清理日志</string>
     <string name="title_refresh_log">刷新日志</string>
@@ -60,10 +66,6 @@
     <string name="librarys">Library</string>
     <string name="installs">Install</string>
     <string name="menu_2_hint">Directory of runtime(tar.xz/zip)</string>
-
-    <string name="download_release">稳定版</string>
-    <string name="download_snapshot">测试版</string>
-    <string name="download_old_beta">远古版</string>
 
     <string name="title_add_package">添加整合包</string>
     <string name="title_download_package">下载整合包</string>

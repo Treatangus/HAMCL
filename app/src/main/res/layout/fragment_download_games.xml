@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/background_layout_fictionlist"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="@string/download_title"
+        android:textSize="@dimen/font_14"
+        android:textColor="@color/black_text"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textColor="@color/black_text"
+            android:text="@string/download_source"
+            android:textSize="@dimen/font_14" />
+
+    <androidx.appcompat.widget.AppCompatSpinner
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:id="@+id/sp_download_source_mode"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/font_14"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="0dp"
+        android:spinnerMode="dropdown"/>
+
+    </RelativeLayout>
+
+    <RadioGroup
+        android:id="@+id/rg_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:checked="true"
+            style="@android:style/Widget.CompoundButton.CheckBox"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black_text"
+            android:text="@string/download_release"
+            android:textSize="@dimen/font_14"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_snapshot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            style="@android:style/Widget.CompoundButton.CheckBox"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black_text"
+            android:text="@string/download_snapshot"
+            android:textSize="@dimen/font_14"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rb_old_beta"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            style="@android:style/Widget.CompoundButton.CheckBox"
+            android:background="?android:attr/selectableItemBackgroundBorderless"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black_text"
+            android:text="@string/download_old_beta"
+            android:textSize="@dimen/font_14"
+            android:textStyle="bold"/>
+
+    </RadioGroup>
+
+    <com.launcher.hamcl.views.PullListView
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:layout_weight="1.0"
+        android:id="@+id/version_list"
+        android:listSelector="?android:selectableItemBackground"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

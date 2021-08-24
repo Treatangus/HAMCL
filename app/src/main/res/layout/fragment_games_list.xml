@@ -27,18 +27,18 @@
                 android:orientation="horizontal">
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/toolbar_button_install"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/toolbar_button_install"
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_toolbar_add_white" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -51,18 +51,18 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/toolbar_button_package"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/toolbar_button_package"
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_toolbar_login_white" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -75,18 +75,18 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/toolbar_button_refresh"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/toolbar_button_refresh"
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_toolbar_refresh_white" />
 
                     <androidx.appcompat.widget.AppCompatTextView
@@ -99,18 +99,18 @@
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
+                    android:id="@+id/toolbar_button_setting"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="10dp"
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <androidx.appcompat.widget.AppCompatImageButton
-                        android:id="@+id/toolbar_button_setting"
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="?android:attr/selectableItemBackgroundBorderless"
                         android:src="@drawable/ic_toolbar_setting_white" />
 
                     <androidx.appcompat.widget.AppCompatTextView

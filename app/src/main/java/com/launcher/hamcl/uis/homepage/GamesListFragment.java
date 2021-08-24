@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -41,10 +42,10 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     private SettingModel settingModel;
     private ConfigModel configModel;
 
-    private ImageButton toolbar_button_install;
-    private ImageButton toolbar_button_package;
-    private ImageButton toolbar_button_refresh;
-    private ImageButton toolbar_button_setting;
+    private LinearLayoutCompat toolbar_button_install;
+    private LinearLayoutCompat toolbar_button_package;
+    private LinearLayoutCompat toolbar_button_refresh;
+    private LinearLayoutCompat toolbar_button_setting;
 
     private PullListView versionFileListView;
 
@@ -60,10 +61,10 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_games_list,container,false); //  此处的布局文件是普通的线性布局（此博客忽略）
 
-        toolbar_button_install = (ImageButton) view.findViewById(R.id.toolbar_button_install);
-        toolbar_button_package = (ImageButton)view.findViewById(R.id.toolbar_button_package);
-        toolbar_button_refresh = (ImageButton)view.findViewById(R.id.toolbar_button_refresh);
-        toolbar_button_setting = (ImageButton)view.findViewById(R.id.toolbar_button_setting);
+        toolbar_button_install = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_install);
+        toolbar_button_package = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_package);
+        toolbar_button_refresh = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_refresh);
+        toolbar_button_setting = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_setting);
         versionFileListView = (PullListView) view.findViewById(R.id.versionFileListView);
 
         game_list_framelayout = (FrameLayout)view.findViewById(R.id.game_list_framelayout);

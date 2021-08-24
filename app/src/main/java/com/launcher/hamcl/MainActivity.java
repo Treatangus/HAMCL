@@ -31,6 +31,7 @@ import com.launcher.hamcl.uis.homepage.GamesListFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
+import com.launcher.hamcl.uis.homepage.seconduis.DownloadGamesFragment;
 import com.launcher.hamcl.widget.MaterialDesignToast;
 import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
@@ -64,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private StartFragment start_fragment;
     private UserFragment user_fragment;
     private GamesListFragment games_list_fragment;
+    private DownloadGamesFragment download_games_fragment;
     private LibraryFragment library_fragment;
 
     private FragmentTransaction HomepageTransaction;//fragment事务
@@ -129,6 +131,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         HomepageUIMap.put(5,0);
         HomepageUIMap.put(6,0);
         //map.put(目前值,上一级值);
+        HomepageUIMap.put(201,3);
         HomepageUIMap.put(203,2);
 
         ToolbarStringMap = new HashMap<Integer,String>();
@@ -139,6 +142,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ToolbarStringMap.put(4,getString(R.string.fb_minecraft_log));
         ToolbarStringMap.put(5,getString(R.string.fb_library_manage));
         ToolbarStringMap.put(4,getString(R.string.fb_launcher_settings));
+        ToolbarStringMap.put(201,getString(R.string.home_title_download_games));
         ToolbarStringMap.put(203,getString(R.string.home_title_game_setting));
 
         Homepageline=0;
@@ -287,18 +291,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     //如果用户fragment不为空就显示出来
                     mFragmentTransaction.show(setting_fragment);
                 }
-                break;
+                break;*/
 			case 201:
 				if (download_games_fragment == null) {
                     download_games_fragment = new DownloadGamesFragment();
                     //加入事务
-                    mFragmentTransaction.add(R.id.framelayout, download_games_fragment);
+                    HomepageTransaction.add(R.id.homepage_fl, download_games_fragment);
                 } else {
                     //如果主页fragment不为空就显示出来
-                    mFragmentTransaction.show(download_games_fragment);
+                    HomepageTransaction.show(download_games_fragment);
                 }
                 break;
-			case 202:
+			/*case 202:
 				if (install_package_fragment == null) {
                     install_package_fragment = new InstallPackageFragment();
                     //加入事务
@@ -342,11 +346,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
 		/*if (games_fragment != null) {
             fragmentTransaction.hide(games_fragment);
-        }
+        }*/
 		if (download_games_fragment != null) {
             fragmentTransaction.hide(download_games_fragment);
         }
-		if (install_package_fragment != null) {
+		/*if (install_package_fragment != null) {
             fragmentTransaction.hide(install_package_fragment);
         }
 		if (games_setting_fragment != null) {

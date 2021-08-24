@@ -87,7 +87,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
       //  beans.add (bean1);
 
 
-         userListAdapter = new UserListAdapter (getContext (),beans);
+        userListAdapter = new UserListAdapter (getContext (),beans);
         users_lv.setAdapter (userListAdapter);
 
         adduser_fabtn.setOnClickListener(this);
@@ -158,7 +158,7 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
         });
         //user_name_edit.setText(configModel.getauth_player_name());
 
-        String[] mItems = getResources().getStringArray(R.array.arrays);
+        String[] mItems = getResources().getStringArray(R.array.login_mode);
         ArrayAdapter adapter= new ArrayAdapter<String>(getActivity(),
                 R.layout.spinner_dialog_create_user, mItems);
         sp_login_mode.setAdapter(adapter);
