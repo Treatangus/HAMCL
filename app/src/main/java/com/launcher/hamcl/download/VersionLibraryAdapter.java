@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -111,7 +110,7 @@ public class VersionLibraryAdapter extends BaseAdapter {
 		LinearLayout madapter = this.viewMap.get(arg0);
 		final ViewHolder viewh;
 		if (madapter == null) {
-			madapter = (LinearLayout) mInflater.inflate(R.layout.adapter_version_library_new, null);
+			madapter = (LinearLayout) mInflater.inflate(R.layout.adapter_version_library, null);
 			viewh = new ViewHolder();
 			//viewh.item=(Toolbar)madapter.findViewById(R.id.versionitemToolbar1);
 			viewh.rlAll=(LinearLayout)madapter.findViewById(R.id.rl_all);
@@ -126,7 +125,6 @@ public class VersionLibraryAdapter extends BaseAdapter {
 						listener.OnItemDepartmentItem(
 							(display.get(arg0)).id()
 							,( display.get(arg0)).url());
-						//Toast.makeText(mContext, arg0 + "" , Toast.LENGTH_SHORT).show();
 					}
 				});
 			viewh.ivOther.setOnClickListener(new View.OnClickListener(){
@@ -150,15 +148,15 @@ public class VersionLibraryAdapter extends BaseAdapter {
 		switch (type){
 			case "release":
 				viewh.ivType.setImageResource (R.drawable.grass);
-				viewh.tvType.setText(R.string.download_release);
+				viewh.tvType.setText((R.string.download_release));
 				break;
 			case "snapshot":
 				viewh.ivType.setImageResource (R.drawable.command);
-				viewh.tvType.setText(R.string.download_snapshot);
+				viewh.tvType.setText((R.string.download_snapshot));
 				break;
 			case "old_alpha":
 				viewh.ivType.setImageResource (R.drawable.craft_table);
-				viewh.tvType.setText(R.string.download_old_beta);
+				viewh.tvType.setText((R.string.download_old_beta));
 				break;
 		}
 

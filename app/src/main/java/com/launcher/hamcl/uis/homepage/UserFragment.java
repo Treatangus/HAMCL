@@ -45,7 +45,7 @@ import me.ratsiel.auth.model.mojang.LoginInterface;
 
 public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks, LoginInterface {
 
-   static UserListAdapter userListAdapter;
+    static UserListAdapter userListAdapter;
 
     private SettingManager settingManager;
     private SettingModel settingModel;

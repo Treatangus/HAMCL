@@ -50,45 +50,45 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_height="40dp"
                         android:layout_width="40dp"
-                        android:src="@drawable/achievements"/>
+                        android:layout_height="40dp"
+                        android:src="@drawable/achievements" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:orientation="vertical"
                         android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:orientation="vertical">
+                        android:paddingEnd="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/user_name_tv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="0.8"
                             android:gravity="left|center|bottom"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_13"
-                            android:text="没有游戏账户"
                             android:singleLine="true"
-                            android:layout_weight="0.8" />
+                            android:text="没有游戏账户"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_13" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/user_mode_tv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="left|center|top"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_9"
-                            android:text="点此添加游戏账户"
                             android:singleLine="true"
-                            android:layout_weight="1" />
+                            android:text="点此添加游戏账户"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_9" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -134,45 +134,45 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_height="40dp"
                         android:layout_width="40dp"
-                        android:src="@drawable/earth"/>
+                        android:layout_height="40dp"
+                        android:src="@drawable/earth" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:orientation="vertical"
                         android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:orientation="vertical">
+                        android:paddingEnd="10dp">
 
                         <com.google.android.material.textview.MaterialTextView
                             android:id="@+id/game_list_version_tv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="0.8"
                             android:gravity="left|center"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_13"
-                            android:text="没有游戏版本"
                             android:singleLine="true"
-                            android:layout_weight="0.8"/>
+                            android:text="没有游戏版本"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_13" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/game_list_tpis_tv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="left|center|top"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_9"
-                            android:text="进入游戏列表安装"
                             android:singleLine="true"
-                            android:layout_weight="1" />
+                            android:text="进入游戏列表安装"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_9" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -229,7 +229,7 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/minecraft_log_rl"
+                android:id="@+id/games_path_rl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground" >
@@ -237,32 +237,44 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_height="40dp"
                         android:layout_width="40dp"
-                        android:src="@drawable/earth_banner"/>
+                        android:layout_height="40dp"
+                        android:src="@drawable/earth_banner" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:orientation="vertical"
                         android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:orientation="vertical">
+                        android:paddingEnd="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="0.8"
                             android:gravity="left|center"
+                            android:singleLine="true"
+                            android:text="@string/fb_game_path"
                             android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_13"
-                            android:text="@string/fb_minecraft_log"
-                            android:singleLine="true" />
+                            android:textSize="@dimen/font_13" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/path_state_tv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:gravity="left|center|top"
+                            android:singleLine="true"
+                            android:text="未检测到游戏数据"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_9" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -302,44 +314,44 @@
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
                     android:paddingStart="10dp"
-                    android:paddingEnd="10dp">
+                    android:paddingTop="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="10dp">
 
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_height="40dp"
                         android:layout_width="40dp"
-                        android:src="@drawable/marketplace"/>
+                        android:layout_height="40dp"
+                        android:src="@drawable/marketplace" />
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:orientation="vertical"
                         android:paddingStart="10dp"
-                        android:paddingEnd="10dp"
-                        android:orientation="vertical">
+                        android:paddingEnd="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="0.8"
                             android:gravity="left|center|bottom"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_13"
-                            android:text="@string/fb_library_manage"
                             android:singleLine="true"
-                            android:layout_weight="0.8" />
+                            android:text="@string/fb_library_manage"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_13" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/library_state_tv"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:layout_weight="1"
                             android:gravity="left|center|top"
-                            android:textColor="@color/black_text"
-                            android:textSize="@dimen/font_9"
-                            android:text="未安装"
                             android:singleLine="true"
-                            android:layout_weight="1" />
+                            android:text="未安装"
+                            android:textColor="@color/black_text"
+                            android:textSize="@dimen/font_9" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -377,7 +389,7 @@
             </androidx.appcompat.widget.LinearLayoutCompat>
 
             <RelativeLayout
-                android:id="@+id/starter_settings_rl"
+                android:id="@+id/launcher_setting_rl"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="?android:attr/selectableItemBackground" >

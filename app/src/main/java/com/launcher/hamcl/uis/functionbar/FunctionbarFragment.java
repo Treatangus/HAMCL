@@ -32,12 +32,20 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
     private RelativeLayout user_management_rl;
     private RelativeLayout game_management_rl;
     private RelativeLayout game_list_rl;
-    private RelativeLayout minecraft_log_rl;
+    private RelativeLayout games_path_rl;
     private RelativeLayout library_management_rl;
-    private RelativeLayout starter_settings_rl;
+    private RelativeLayout launcher_setting_rl;
 
+    // 用户管理
     private AppCompatTextView user_name_tv;
     private AppCompatTextView user_mode_tv;
+    // 游戏管理
+    private AppCompatTextView game_list_version_tv;
+    private AppCompatTextView game_list_tpis_tv;
+    // 游戏目录
+    private AppCompatTextView path_state_tv;
+    //核心库安装
+    private AppCompatTextView library_state_tv;
 
     private MainActivity parents;
     private FragmentTransaction HomepageTransaction;
@@ -49,19 +57,26 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
         user_management_rl = view.findViewById(R.id.user_management_rl);
         game_management_rl = view.findViewById(R.id.game_management_rl);
         game_list_rl = view.findViewById(R.id.game_list_rl);
-        minecraft_log_rl = view.findViewById(R.id.minecraft_log_rl);
+        games_path_rl = view.findViewById(R.id.games_path_rl);
         library_management_rl = view.findViewById(R.id.library_management_rl);
-        starter_settings_rl = view.findViewById(R.id.starter_settings_rl);
+        launcher_setting_rl = view.findViewById(R.id.launcher_setting_rl);
 
         user_name_tv = view.findViewById(R.id.user_name_tv);
         user_mode_tv = view.findViewById(R.id.user_mode_tv);
 
+        game_list_version_tv = view.findViewById(R.id.game_list_version_tv);
+        game_list_tpis_tv = view.findViewById(R.id.game_list_tpis_tv);
+
+        path_state_tv = view.findViewById(R.id.path_state_tv);
+
+        library_state_tv = view.findViewById(R.id.library_state_tv);
+
         user_management_rl.setOnClickListener(this);
         game_management_rl.setOnClickListener(this);
         game_list_rl.setOnClickListener(this);
-        minecraft_log_rl.setOnClickListener(this);
+        games_path_rl.setOnClickListener(this);
         library_management_rl.setOnClickListener(this);
-        starter_settings_rl.setOnClickListener(this);
+        launcher_setting_rl.setOnClickListener(this);
         return view;
     }
 
@@ -115,14 +130,14 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
             case R.id.game_list_rl:
                 setHomepageClick(3);
                 break;
-            case R.id.minecraft_log_rl:
-
+            case R.id.games_path_rl:
+                setHomepageClick(4);
                 break;
             case R.id.library_management_rl:
                 setHomepageClick(5);
                 break;
-            case R.id.starter_settings_rl:
-
+            case R.id.launcher_setting_rl:
+                setHomepageClick(6);
                 break;
         }
     }

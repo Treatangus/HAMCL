@@ -28,6 +28,8 @@ import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.functionbar.FunctionbarFragment;
 import com.launcher.hamcl.uis.homepage.GamesListFragment;
+import com.launcher.hamcl.uis.homepage.GamesPathFragment;
+import com.launcher.hamcl.uis.homepage.LauncherSettingFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
@@ -66,7 +68,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private UserFragment user_fragment;
     private GamesListFragment games_list_fragment;
     private DownloadGamesFragment download_games_fragment;
+    private GamesPathFragment games_path_fragment;
     private LibraryFragment library_fragment;
+    private LauncherSettingFragment launcher_setting_fragment;
 
     private FragmentTransaction HomepageTransaction;//fragment事务
     private FragmentManager HomepagerManager;//fragment管理者
@@ -139,9 +143,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ToolbarStringMap.put(1,getString(R.string.fb_user_manage));
         ToolbarStringMap.put(2,getString(R.string.fb_game_manage));
         ToolbarStringMap.put(3,getString(R.string.fb_game_list));
-        ToolbarStringMap.put(4,getString(R.string.fb_minecraft_log));
+        ToolbarStringMap.put(4,getString(R.string.fb_game_path));
         ToolbarStringMap.put(5,getString(R.string.fb_library_manage));
-        ToolbarStringMap.put(4,getString(R.string.fb_launcher_settings));
+        ToolbarStringMap.put(6,getString(R.string.fb_launcher_settings));
         ToolbarStringMap.put(201,getString(R.string.home_title_download_games));
         ToolbarStringMap.put(203,getString(R.string.home_title_game_setting));
 
@@ -242,6 +246,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HomepageTransaction.show(user_fragment);
                 }
                 break;
+           /*case 2:
+                if (games_fragment == null) {
+                    games_fragment = new GamesFragment();
+                    //加入事务
+                    mFragmentTransaction.add(R.id.framelayout, games_fragment);
+                } else {
+                    //如果用户fragment不为空就显示出来
+                    mFragmentTransaction.show(games_fragment);
+                }
+                break;*/
             case 3:
                 if (games_list_fragment == null) {
                     games_list_fragment = new GamesListFragment();
@@ -252,16 +266,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HomepageTransaction.show(games_list_fragment);
                 }
                 break;
-			/*case 2:
-                if (games_fragment == null) {
-                    games_fragment = new GamesFragment();
+            case 4:
+                if (games_path_fragment == null) {
+                    games_path_fragment = new GamesPathFragment();
                     //加入事务
-                    mFragmentTransaction.add(R.id.framelayout, games_fragment);
+                    HomepageTransaction.add(R.id.homepage_fl, games_path_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    mFragmentTransaction.show(games_fragment);
+                    HomepageTransaction.show(games_path_fragment);
                 }
-                break;*/
+                break;
             case 5:
                 if (library_fragment == null) {
                     library_fragment = new LibraryFragment();
@@ -272,26 +286,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     HomepageTransaction.show(library_fragment);
                 }
                 break;
-			/*case 4:
-                if (gameslog_fragment == null) {
-                    gameslog_fragment = new GamesLogFragment();
+			case 6:
+                if (launcher_setting_fragment == null) {
+                    launcher_setting_fragment = new LauncherSettingFragment();
                     //加入事务
-                    mFragmentTransaction.add(R.id.framelayout, gameslog_fragment);
+                    HomepageTransaction.add(R.id.homepage_fl, launcher_setting_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    mFragmentTransaction.show(gameslog_fragment);
+                    HomepageTransaction.show(launcher_setting_fragment);
                 }
                 break;
-			case 5:
-                if (setting_fragment == null) {
-                    setting_fragment = new SettingFragmnet();
-                    //加入事务
-                    mFragmentTransaction.add(R.id.framelayout, setting_fragment);
-                } else {
-                    //如果用户fragment不为空就显示出来
-                    mFragmentTransaction.show(setting_fragment);
-                }
-                break;*/
 			case 201:
 				if (download_games_fragment == null) {
                     download_games_fragment = new DownloadGamesFragment();
@@ -359,12 +363,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (library_fragment != null) {
             fragmentTransaction.hide(library_fragment);
         }
-		/*if (gameslog_fragment != null) {
-            fragmentTransaction.hide(gameslog_fragment);
+		if (games_path_fragment != null) {
+            fragmentTransaction.hide(games_path_fragment);
         }
-		if (setting_fragment != null) {
-            fragmentTransaction.hide(setting_fragment);
-        }*/
+		if (launcher_setting_fragment != null) {
+            fragmentTransaction.hide(launcher_setting_fragment);
+        }
     }
 
     public void setToolbarTitle(String s)
