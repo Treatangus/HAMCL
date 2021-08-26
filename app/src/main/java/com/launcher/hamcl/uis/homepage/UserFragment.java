@@ -1,5 +1,6 @@
 package com.launcher.hamcl.uis.homepage;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,7 +45,7 @@ import me.ratsiel.auth.model.mojang.LoginInterface;
 
 public class UserFragment extends Fragment implements View.OnClickListener , UICallbacks, LoginInterface {
 
-    UserListAdapter userListAdapter;
+   static UserListAdapter userListAdapter;
 
     private SettingManager settingManager;
     private SettingModel settingModel;
@@ -58,14 +59,30 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
     private TextInputEditText user_microsoft_edit;
     private TextInputEditText password_microsoft_edit;
 
-    private PullListView users_lv;
+    private static PullListView users_lv;
+    public static Context context;
 
-    private List<UserListBean> beans;
+    private static List<UserListBean> beans;
+
+    public static void fruse(){
+        UserDataBaseBox dataBaseBox = UserDataBaseBox.getInstance ();
+        beans = dataBaseBox.getUsers ("/sdcard/games/com.explore.launcher/users");
+
+        userListAdapter = getUserListAdapter();  // new U serListAdapter (getContext (),beans);
+        users_lv.setAdapter (userListAdapter);
+
+
+    }
+    public static UserListAdapter getUserListAdapter (){
+        return new UserListAdapter (context,beans);
+    }
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_user,container,false);
 
+        context = getContext ();
         adduser_fabtn = (FloatingActionButton)view.findViewById(R.id.adduser_fabtn);
         users_lv = (PullListView) view.findViewById(R.id.users_lv);
 
@@ -255,7 +272,8 @@ public class UserFragment extends Fragment implements View.OnClickListener , UIC
                         {
                             dialog.dismiss ();
                             MaterialDesignToast.makeText (getActivity (), "创建成功", Toast.LENGTH_SHORT, MaterialDesignToast.TYPE_SUCCESS).show ();
-                            userListAdapter.notifyDataSetChanged ();
+                           // userListAdapter.notifyDataSetChanged ();
+                            fruse ();
                         }else {
                           MaterialDesignToast.makeText (getActivity (),"用户已存在！",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
                       }

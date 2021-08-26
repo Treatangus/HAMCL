@@ -133,11 +133,11 @@ public class UserListAdapter extends BaseAdapter {
 
     @Override
     public void notifyDataSetChanged () {
-        beanList  = UserDataBaseBox.getInstance ().getUsers ("/sdcard/games/com.explore.launcher/users/");
+       /* beanList  = UserDataBaseBox.getInstance ().getUsers ("/sdcard/games/com.explore.launcher/users/");
         allChecked = new ArrayList<Boolean> ();
         for (UserListBean bean : beanList){
             allChecked.add (false);
-        }
+        }*/
         super.notifyDataSetChanged ();
     }
 }

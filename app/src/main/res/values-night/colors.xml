@@ -42,4 +42,14 @@
     <color name="text_info">#4B4B4B</color>
     <color name="text_warn">#FF0000</color>
     <color name="text_hint">#8C8C8C</color>
+
+
+    <color name="colorInfo">#29B6F6</color>
+
+    <color name="colorSuccess">#66BB6A</color>
+
+    <color name="colorWarning">#FFA726</color>
+
+    <color name="colorError">#EF5350</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>
