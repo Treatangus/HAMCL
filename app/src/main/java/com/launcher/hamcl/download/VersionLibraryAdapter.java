@@ -126,6 +126,7 @@ public class VersionLibraryAdapter extends BaseAdapter {
 						listener.OnItemDepartmentItem(
 							(display.get(arg0)).id()
 							,( display.get(arg0)).url());
+						//Toast.makeText(mContext, arg0 + "" , Toast.LENGTH_SHORT).show();
 					}
 				});
 			viewh.ivOther.setOnClickListener(new View.OnClickListener(){
@@ -149,15 +150,15 @@ public class VersionLibraryAdapter extends BaseAdapter {
 		switch (type){
 			case "release":
 				viewh.ivType.setImageResource (R.drawable.grass);
-				viewh.tvType.setText("稳定版");
+				viewh.tvType.setText(R.string.download_release);
 				break;
 			case "snapshot":
 				viewh.ivType.setImageResource (R.drawable.command);
-				viewh.tvType.setText("测试版");
+				viewh.tvType.setText(R.string.download_snapshot);
 				break;
 			case "old_alpha":
 				viewh.ivType.setImageResource (R.drawable.craft_table);
-				viewh.tvType.setText("远古版");
+				viewh.tvType.setText(R.string.download_old_beta);
 				break;
 		}
 
