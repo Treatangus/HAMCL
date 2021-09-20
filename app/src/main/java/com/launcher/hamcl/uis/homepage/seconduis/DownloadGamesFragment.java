@@ -30,6 +30,7 @@ import com.launcher.hamcl.R;
 import com.launcher.hamcl.download.VersionLibraryAdapter;
 import com.launcher.hamcl.download.downloader.HttpUtil;
 import com.launcher.hamcl.download.util.VersionUtil;
+import com.launcher.hamcl.utils.Source;
 import com.launcher.hamcl.views.PullListView;
 
 import java.io.IOException;
@@ -115,21 +116,24 @@ public class DownloadGamesFragment extends Fragment {
                         rbRelease.setChecked(true);
                         get("https://launchermeta.mojang.com/mc/game/version_manifest.json");
                         download_source = "https://launchermeta.mojang.com";
-                        Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
+                        Source.source = download_source;
+                       // Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
                         break;
                     case 1:
                         version_list.setAdapter(null);
                         rbRelease.setChecked(true);
                         get("https://download.mcbbs.net/mc/game/version_manifest.json");
                         download_source = "https://bmclapi2.bangbang93.com";
-                        Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
+                        Source.source = download_source;
+                       // Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
                         break;
                     case 2:
                         version_list.setAdapter(null);
                         rbRelease.setChecked(true);
                         get("https://bmclapi2.bangbang93.com/mc/game/version_manifest.json");
                         download_source = "https://download.mcbbs.net";
-                        Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
+                        Source.source = download_source;
+                       // Toast.makeText(getActivity(), download_source , Toast.LENGTH_SHORT).show();
                         break;
                     default:
                         break;
@@ -229,6 +233,7 @@ public class DownloadGamesFragment extends Fragment {
     }
 
     private void get(String url){
+        Source.source = download_source;
         HttpUtil.sendOkHttpRequest(url, new okhttp3.Callback(){
             @Override
             public void onFailure(Call call, final IOException e) {

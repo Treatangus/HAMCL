@@ -20,12 +20,18 @@
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_dialog_create_user.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_download_games_source.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/menu/menu_adapter_version.xml" value="0.25462962962962965" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_download_mc.xml" value="0.17864583333333334" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_user.xml" value="0.4" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.4" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_version_library.xml" value="0.11875" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/custom_toast_container.xml" value="0.115625" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/dialog_create_user.xml" value="0.4" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/dialog_download.xml" value="0.17857142857142858" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/fragment_download_games.xml" value="0.17864583333333334" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/fragment_games_path.xml" value="0.17864583333333334" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/fragment_library.xml" value="0.17864583333333334" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/fragment_user.xml" value="0.176" />
+        <entry key="..\:/projects/HAMCL/app/src/main/res/layout/spinner_download_games_source.xml" value="0.17864583333333334" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/spinner_start_games_adapter.xml" value="0.1408514492753623" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/menu/menu_adapter_version.xml" value="0.240625" />
       </map>

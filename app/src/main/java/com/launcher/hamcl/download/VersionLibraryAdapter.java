@@ -12,18 +12,32 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.launcher.hamcl.download.downloader.DownloadManager;
+import com.launcher.hamcl.download.downloader.HttpUtil;
 import com.launcher.hamcl.download.util.*;
+import com.launcher.hamcl.widget.MaterialDesignToast;
 
+import org.apache.commons.io.FileUtils;
+
+import java.io.File;
+import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import okhttp3.Call;
+import okhttp3.Response;
+
 public class VersionLibraryAdapter extends BaseAdapter {
 
 	protected final Context mContext;
+	AppCompatActivity activity;
 	protected final LayoutInflater mInflater;
 	private List<com.launcher.hamcl.download.util.VersionUtil> overall;
 	private List<VersionUtil>release;
@@ -34,6 +48,7 @@ public class VersionLibraryAdapter extends BaseAdapter {
 	public OnItemDepartment listener = null;
 	public VersionLibraryAdapter(Context context, List<VersionUtil> overall , int type){
 		mContext = context;
+		activity = (AppCompatActivity) context;
 
 		this.overall = overall;
 		display=new ArrayList<VersionUtil>();
@@ -103,6 +118,7 @@ public class VersionLibraryAdapter extends BaseAdapter {
 
 		return true;
 	}
+	List<VersionUtil> tmp;
 	public View getView(final int arg0, View arg1, ViewGroup arg2) {
 		final VersionUtil file = getList().get(arg0);
 		String id=file.id().toLowerCase();
@@ -133,7 +149,25 @@ public class VersionLibraryAdapter extends BaseAdapter {
 					{
 						/*Intent i=new Intent(mContext ,DownloadService.class);
 						mContext.startService(i);*/
-						Toast.makeText(mContext, arg0 + "" , Toast.LENGTH_SHORT).show();
+						MaterialDesignToast.makeText(mContext, "下载清单" , Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
+
+						HttpUtil.sendOkHttpRequest (tmp.get (arg0).url (), new okhttp3.Callback () {
+							@Override
+							public void onResponse (@NonNull Call call, @NonNull Response response) throws IOException {
+								FileUtils.writeByteArrayToFile (new File (com.explore.launcher.utils.SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json"),response.body ().string ().getBytes());
+								activity.runOnUiThread (new Runnable () {
+									@Override
+									public void run () {
+										new MinecraftDownloader().download (mContext,com.explore.launcher.utils.SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json");
+									}
+								});
+							}
+
+							@Override
+							public void onFailure (@NonNull Call call, @NonNull IOException e) {
+
+							}
+						});
 					}
 				});
 			madapter.setTag(viewh);
@@ -149,14 +183,17 @@ public class VersionLibraryAdapter extends BaseAdapter {
 			case "release":
 				viewh.ivType.setImageResource (R.drawable.grass);
 				viewh.tvType.setText((R.string.download_release));
+				tmp = release;
 				break;
 			case "snapshot":
 				viewh.ivType.setImageResource (R.drawable.command);
 				viewh.tvType.setText((R.string.download_snapshot));
+				tmp = snapshot;
 				break;
 			case "old_alpha":
 				viewh.ivType.setImageResource (R.drawable.craft_table);
 				viewh.tvType.setText((R.string.download_old_beta));
+				tmp = old_alpha;
 				break;
 		}
 

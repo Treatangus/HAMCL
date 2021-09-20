@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.os.Environment;
@@ -234,5 +235,9 @@ public class SDCardUtils {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    @SuppressLint("SdCardPath")
+    public static String getBaseMinecraftPath(){
+        return "/sdcard/games/com.explore.launcher/.minecraft";
     }
 }

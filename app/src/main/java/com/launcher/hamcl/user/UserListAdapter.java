@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 
 import com.google.android.material.button.MaterialButton;
 import com.launcher.hamcl.R;
+import com.launcher.hamcl.uis.homepage.UserFragment;
 import com.zuowu.utils.UserDataBaseBox;
 
 import org.apache.commons.io.FileUtils;
@@ -30,9 +31,12 @@ public class UserListAdapter extends BaseAdapter {
     private List<Boolean> allChecked;
     private Map<Integer, View> viewMap = new HashMap<Integer, View> ();
 
-    public UserListAdapter(Context context,List<UserListBean> beans){
+    UserFragment userFragment;
+
+    public UserListAdapter(Context context, List<UserListBean> beans){
         this.context = context;
         this.beanList = beans;
+      //  this.userFragment = userFragment;
         allChecked = new ArrayList<Boolean> ();
         for (UserListBean bean : beanList){
             allChecked.add (false);
@@ -108,6 +112,8 @@ public class UserListAdapter extends BaseAdapter {
             public void onClick (View view) {
                 File file = new File ("/sdcard/games/com.explore.launcher/users/"+beanList.get (i).getUserNmae ()+".msu");
                 file.delete ();
+                //userFragment.fruse
+                UserFragment.fruse ();
                 notifyDataSetChanged ();
             }
         });

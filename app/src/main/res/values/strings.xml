@@ -59,6 +59,9 @@
     <string name="download_snapshot">测试版</string>
     <string name="download_old_beta">远古版</string>
 
+    <string name="download_downloading">下载中...</string>
+    <string name="download_cancel">取消下载</string>
+
     <string name="title_clear_log">清理日志</string>
     <string name="title_refresh_log">刷新日志</string>
     <string name="title_copy">复制日志</string>
