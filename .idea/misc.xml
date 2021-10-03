@@ -3,13 +3,24 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/background_layout_fictionlist.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/background_layout_frctionlist_line.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_account_filled_black.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_baseline_refresh_black.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_delete_black.xml" value="0.1712962962962963" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_microsoft_filled_black.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_plus_circle_outline_black.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_send_black.xml" value="0.1925925925925926" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_setting_outline_black.xml" value="0.19537037037037036" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/drawable/ic_toolbar_refresh_white.xml" value="0.19537037037037036" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_download_mc.xml" value="0.1641337386018237" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_user.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.1646403242147923" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version_library.xml" value="0.22" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/adapter_version_library_new.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/dialog_create_user.xml" value="0.22" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/dialog_download_minecraft.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_download_games.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_functionbar.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_games_list.xml" value="0.25" />
@@ -17,9 +28,14 @@
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_launcher_setting.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_start.xml" value="0.25" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_user.xml" value="0.12454710144927536" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_user_functionbar.xml" value="0.25" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_version_list.xml" value="0.1641337386018237" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_version_list_functionbar.xml" value="0.25" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/fragment_versionlist_functionbar.xml" value="0.1641337386018237" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_dialog_create_user.xml" value="0.13541666666666666" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/layout/spinner_download_games_source.xml" value="0.17028985507246377" />
         <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/menu/menu_adapter_version.xml" value="0.25462962962962965" />
+        <entry key="..\:/Users/808bass/AndroidStudioProjects/HAMCL/app/src/main/res/xml/base.xml" value="0.1641337386018237" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_download_mc.xml" value="0.17864583333333334" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_user.xml" value="0.4" />
         <entry key="..\:/projects/HAMCL/app/src/main/res/layout/adapter_version.xml" value="0.4" />
@@ -37,7 +53,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

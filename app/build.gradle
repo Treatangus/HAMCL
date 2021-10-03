@@ -39,6 +39,7 @@ dependencies {
     //rxpermission（配套rxjava使用的）
     implementation 'com.tbruyelle.rxpermissions2:rxpermissions:+'
 
+    implementation 'com.tamic.fastdownloader:Android-FastDownloader:1.0.3'
 
     implementation 'com.tamic.fastdownloader:Android-FastDownloader:1.0.3'
 

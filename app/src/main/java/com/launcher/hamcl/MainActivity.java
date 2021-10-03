@@ -3,13 +3,11 @@ package com.launcher.hamcl;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.Settings;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
@@ -18,8 +16,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -27,7 +23,9 @@ import com.launcher.hamcl.setting.SettingManager;
 import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.functionbar.FunctionbarFragment;
-import com.launcher.hamcl.uis.homepage.GamesListFragment;
+import com.launcher.hamcl.uis.functionbar.UserFunctionbarFragment;
+import com.launcher.hamcl.uis.functionbar.VersionListFunctionbarFragment;
+import com.launcher.hamcl.uis.homepage.VersionListFragment;
 import com.launcher.hamcl.uis.homepage.GamesPathFragment;
 import com.launcher.hamcl.uis.homepage.LauncherSettingFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
@@ -39,7 +37,6 @@ import com.tbruyelle.rxpermissions2.Permission;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.HashMap;
-import java.util.Objects;
 
 import io.reactivex.functions.Consumer;
 
@@ -58,15 +55,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton toolbar_button_refresh;
 
     private FrameLayout functionbar_fl;
-    private FunctionbarFragment functionbar_fragment;
+    private FunctionbarFragment fb_fragment;
+    private UserFunctionbarFragment fb_user_fragment;
+    private VersionListFunctionbarFragment fb_version_list_fragment;
 
     private FragmentTransaction FunctionbarTransaction;//fragment事务
     private FragmentManager FunctionbarManager;//fragment管理者
 
+    private HashMap<Integer, Integer> FunctionbarUIMap;
+    public int Functionbarline;
+
     private FrameLayout homepage_fl;
     private StartFragment start_fragment;
     private UserFragment user_fragment;
-    private GamesListFragment games_list_fragment;
+    private VersionListFragment games_list_fragment;
     private DownloadGamesFragment download_games_fragment;
     private GamesPathFragment games_path_fragment;
     private LibraryFragment library_fragment;
@@ -93,7 +95,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSettingFile();
         saveSetting();
         initView();
-        setFunctionbarClick(0);
+        //setFunctionbarClick(0);
+        FunctionbarMap();
         HomepageMap();
     }
 
@@ -125,6 +128,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         settingManager.saveConfigToFile(configModel);
     }
 
+    private void FunctionbarMap() {
+        FunctionbarUIMap = new HashMap<Integer,Integer>();
+        FunctionbarUIMap.put(0,0);
+        FunctionbarUIMap.put(1,0);
+        FunctionbarUIMap.put(3,0);
+
+        Functionbarline=0;
+        setFunctionbarClick(Homepageline);
+    }
+
     private void HomepageMap() {
         HomepageUIMap = new HashMap<Integer,Integer>();
         HomepageUIMap.put(0,0);
@@ -142,8 +155,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ToolbarStringMap.put(0,getString(R.string.home_title_homepage));
         ToolbarStringMap.put(1,getString(R.string.fb_user_manage));
         ToolbarStringMap.put(2,getString(R.string.fb_game_manage));
-        ToolbarStringMap.put(3,getString(R.string.fb_game_list));
-        ToolbarStringMap.put(4,getString(R.string.fb_game_path));
+        ToolbarStringMap.put(3,getString(R.string.fb_version_list));
+        ToolbarStringMap.put(4,getString(R.string.fb_download));
         ToolbarStringMap.put(5,getString(R.string.fb_library_manage));
         ToolbarStringMap.put(6,getString(R.string.fb_launcher_settings));
         ToolbarStringMap.put(201,getString(R.string.home_title_download_games));
@@ -157,10 +170,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.toolbar_button_backspace:
+                setFunctionbarClick(FunctionbarUIMap.get(Functionbarline));
+                Functionbarline = FunctionbarUIMap.get(Functionbarline);
+
                 setHomepageClick(HomepageUIMap.get(Homepageline));
-                Homepageline=HomepageUIMap.get(Homepageline);
+                Homepageline = HomepageUIMap.get(Homepageline);
                 break;
             case R.id.toolbar_button_backhome:
+                setFunctionbarClick(0);
                 setHomepageClick(0);
                 break;
             case R.id.toolbar_button_refresh:
@@ -187,14 +204,38 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (type) {
             case 0://左侧功能栏
                 //如果左侧功能栏的fragment是null的话,就创建一个
-                if (functionbar_fragment == null) {
-                    functionbar_fragment = new FunctionbarFragment();
+                if (fb_fragment == null) {
+                    fb_fragment = new FunctionbarFragment();
                     //加入事务
-                    FunctionbarTransaction.add(R.id.functionbar_fl, functionbar_fragment);
+                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_fragment);
                 } else {
                     //如果左侧功能栏fragment不为空就显示出来
                     FunctionbarTransaction.show(
-                            functionbar_fragment);
+                            fb_fragment);
+                }
+                break;
+            case 1://左侧功能栏
+                //如果左侧功能栏的fragment是null的话,就创建一个
+                if (fb_user_fragment == null) {
+                    fb_user_fragment = new UserFunctionbarFragment();
+                    //加入事务
+                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_user_fragment);
+                } else {
+                    //如果左侧功能栏fragment不为空就显示出来
+                    FunctionbarTransaction.show(
+                            fb_user_fragment);
+                }
+                break;
+            case 3://左侧功能栏
+                //如果左侧功能栏的fragment是null的话,就创建一个
+                if (fb_version_list_fragment == null) {
+                    fb_version_list_fragment = new VersionListFunctionbarFragment();
+                    //加入事务
+                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_version_list_fragment);
+                } else {
+                    //如果左侧功能栏fragment不为空就显示出来
+                    FunctionbarTransaction.show(
+                            fb_version_list_fragment);
                 }
                 break;
         }
@@ -209,8 +250,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     public void hideFunctionbarFragment(FragmentTransaction fragmentTransaction) {
         //如果此fragment不为空的话就隐藏起来
-        if (functionbar_fragment != null) {
-            fragmentTransaction.hide(functionbar_fragment);
+        if (fb_fragment != null) {
+            fragmentTransaction.hide(fb_fragment);
+        }
+        if (fb_user_fragment != null) {
+            fragmentTransaction.hide(fb_user_fragment);
+        }
+        if (fb_version_list_fragment != null) {
+            fragmentTransaction.hide(fb_version_list_fragment);
         }
     }
 
@@ -258,7 +305,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;*/
             case 3:
                 if (games_list_fragment == null) {
-                    games_list_fragment = new GamesListFragment();
+                    games_list_fragment = new VersionListFragment();
                     //加入事务
                     HomepageTransaction.add(R.id.homepage_fl, games_list_fragment);
                 } else {
@@ -383,8 +430,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSettingFile();
         saveSetting();
     }
-
-
 
     public void requestPermission() {
 

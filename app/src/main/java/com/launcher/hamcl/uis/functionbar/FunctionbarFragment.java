@@ -23,7 +23,7 @@ import com.launcher.hamcl.setting.model.ConfigModel;
 import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.UICallbacks;
 
-public class FunctionbarFragment extends Fragment implements View.OnClickListener , UICallbacks {
+public class FunctionbarFragment extends Fragment implements View.OnClickListener, UICallbacks {
 
     private SettingManager settingManager;
     private SettingModel settingModel;
@@ -42,12 +42,11 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
     // 游戏管理
     private AppCompatTextView game_list_version_tv;
     private AppCompatTextView game_list_tpis_tv;
-    // 游戏目录
-    private AppCompatTextView path_state_tv;
     //核心库安装
     private AppCompatTextView library_state_tv;
 
     private MainActivity parents;
+    private FragmentTransaction FunctionbarTransaction;
     private FragmentTransaction HomepageTransaction;
 
     @Nullable
@@ -66,8 +65,6 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
 
         game_list_version_tv = view.findViewById(R.id.game_list_version_tv);
         game_list_tpis_tv = view.findViewById(R.id.game_list_tpis_tv);
-
-        path_state_tv = view.findViewById(R.id.path_state_tv);
 
         library_state_tv = view.findViewById(R.id.library_state_tv);
 
@@ -109,6 +106,13 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
         }
     }
 
+    private void setFunctionbarClick(int type) {
+        FunctionbarTransaction = ((MainActivity)this.getActivity()).getSupportFragmentManager().beginTransaction();
+        ((MainActivity)this.getActivity()).Functionbarline=type;
+        ((MainActivity)this.getActivity()).hideFunctionbarFragment(FunctionbarTransaction);
+        ((MainActivity)this.getActivity()).setFunctionbarClick(type);
+    }
+
     private void setHomepageClick(int type) {
         HomepageTransaction = ((MainActivity)this.getActivity()).getSupportFragmentManager().beginTransaction();
         ((MainActivity)this.getActivity()).Homepageline=type;
@@ -121,6 +125,7 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
         switch (v.getId()){
             case R.id.user_management_rl:
                 //Toast.makeText(MainActivity.this, "用户管理" , Toast.LENGTH_SHORT).show();
+                setFunctionbarClick(1);
                 setHomepageClick(1);
                 //line=AddArray(line,1);
                 break;
@@ -128,6 +133,7 @@ public class FunctionbarFragment extends Fragment implements View.OnClickListene
 
                 break;
             case R.id.game_list_rl:
+                setFunctionbarClick(3);
                 setHomepageClick(3);
                 break;
             case R.id.games_path_rl:

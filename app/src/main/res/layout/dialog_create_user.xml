@@ -31,7 +31,7 @@
 					android:textColor="@color/black_title"
 					style="@style/TextStyleTitle"
 					android:textSize="@dimen/font_20"
-					android:text="@string/user_new_account"
+					android:text="@string/fb_user_add_account"
 					android:textStyle="bold" />
 
 				<androidx.appcompat.widget.LinearLayoutCompat
@@ -102,7 +102,7 @@
 								android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone|time"
 								android:textStyle="bold"
 								android:textSize="@dimen/font_14"
-								android:hint="@string/user_mojang_account"
+								android:hint="@string/user_mojang_accounts"
 								android:singleLine="true" />
 
 						</com.google.android.material.textfield.TextInputLayout>
@@ -174,7 +174,7 @@
 								android:inputType="text|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete|textMultiLine|textImeMultiLine|textNoSuggestions|textUri|textEmailAddress|textEmailSubject|textShortMessage|textLongMessage|textPersonName|textPostalAddress|textPassword|textVisiblePassword|textWebEditText|textFilter|textPhonetic|textWebEmailAddress|textWebPassword|phone|time"
 								android:textStyle="bold"
 								android:textSize="@dimen/font_14"
-								android:hint="@string/user_microsoft_account"
+								android:hint="@string/user_microsoft_accounts"
 								android:singleLine="true" />
 
 						</com.google.android.material.textfield.TextInputLayout>

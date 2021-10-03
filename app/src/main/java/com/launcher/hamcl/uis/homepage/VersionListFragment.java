@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -36,16 +35,11 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GamesListFragment extends Fragment implements View.OnClickListener , UICallbacks {
+public class VersionListFragment extends Fragment implements View.OnClickListener , UICallbacks {
 
     private SettingManager settingManager;
     private SettingModel settingModel;
     private ConfigModel configModel;
-
-    private LinearLayoutCompat toolbar_button_install;
-    private LinearLayoutCompat toolbar_button_package;
-    private LinearLayoutCompat toolbar_button_refresh;
-    private LinearLayoutCompat toolbar_button_setting;
 
     private PullListView versionFileListView;
 
@@ -59,20 +53,11 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_games_list,container,false); //  此处的布局文件是普通的线性布局（此博客忽略）
+        View view = inflater.inflate(R.layout.fragment_version_list,container,false); //  此处的布局文件是普通的线性布局（此博客忽略）
 
-        toolbar_button_install = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_install);
-        toolbar_button_package = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_package);
-        toolbar_button_refresh = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_refresh);
-        toolbar_button_setting = (LinearLayoutCompat) view.findViewById(R.id.toolbar_button_setting);
         versionFileListView = (PullListView) view.findViewById(R.id.versionFileListView);
 
         game_list_framelayout = (FrameLayout)view.findViewById(R.id.game_list_framelayout);
-
-        toolbar_button_install.setOnClickListener(this);
-        toolbar_button_package.setOnClickListener(this);
-        toolbar_button_refresh.setOnClickListener(this);
-        toolbar_button_setting.setOnClickListener(this);
 
         gameslist();
         return view;
@@ -148,18 +133,7 @@ public class GamesListFragment extends Fragment implements View.OnClickListener 
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.toolbar_button_install:
-                setHomepageClick(201);
-                break;
-            case R.id.toolbar_button_package:
-                setHomepageClick(202);
-                break;
-            case R.id.toolbar_button_refresh:
 
-                break;
-            case R.id.toolbar_button_setting:
-                setHomepageClick(203);
-                break;
         }
     }
 

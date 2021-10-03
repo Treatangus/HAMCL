@@ -1,4 +1,4 @@
-package com.explore.launcher.utils;
+package com.launcher.hamcl.utils;
 
 import java.io.File;
 import java.io.FileNotFoundException;

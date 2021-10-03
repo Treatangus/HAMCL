@@ -19,13 +19,13 @@ import androidx.cardview.widget.CardView;
 import com.launcher.hamcl.download.downloader.DownloadManager;
 import com.launcher.hamcl.download.downloader.HttpUtil;
 import com.launcher.hamcl.download.util.*;
+import com.launcher.hamcl.utils.SDCardUtils;
 import com.launcher.hamcl.widget.MaterialDesignToast;
 
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -135,41 +135,41 @@ public class VersionLibraryAdapter extends BaseAdapter {
 			viewh.ivOther=(CardView)madapter.findViewById(R.id.card_down);
 			viewh.ivType = madapter.findViewById (R.id.version_type_pic);
 			viewh.rlAll.setOnClickListener(new View.OnClickListener(){
-					@Override
-					public void onClick(View p1)
-					{
-						listener.OnItemDepartmentItem(
+				@Override
+				public void onClick(View p1)
+				{
+					listener.OnItemDepartmentItem(
 							(display.get(arg0)).id()
 							,( display.get(arg0)).url());
-					}
-				});
+				}
+			});
 			viewh.ivOther.setOnClickListener(new View.OnClickListener(){
-					@Override
-					public void onClick(View p1)
-					{
+				@Override
+				public void onClick(View p1)
+				{
 						/*Intent i=new Intent(mContext ,DownloadService.class);
 						mContext.startService(i);*/
-						MaterialDesignToast.makeText(mContext, "下载清单" , Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
+					MaterialDesignToast.makeText(mContext, "下载清单" , Toast.LENGTH_SHORT,MaterialDesignToast.TYPE_INFO).show();
 
-						HttpUtil.sendOkHttpRequest (tmp.get (arg0).url (), new okhttp3.Callback () {
-							@Override
-							public void onResponse (@NonNull Call call, @NonNull Response response) throws IOException {
-								FileUtils.writeByteArrayToFile (new File (com.explore.launcher.utils.SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json"),response.body ().string ().getBytes());
-								activity.runOnUiThread (new Runnable () {
-									@Override
-									public void run () {
-										new MinecraftDownloader().download (mContext,com.explore.launcher.utils.SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json");
-									}
-								});
-							}
+					HttpUtil.sendOkHttpRequest (tmp.get (arg0).url (), new okhttp3.Callback () {
+						@Override
+						public void onResponse (@NonNull Call call, @NonNull Response response) throws IOException {
+							FileUtils.writeByteArrayToFile (new File (SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json"),response.body ().string ().getBytes());
+							activity.runOnUiThread (new Runnable () {
+								@Override
+								public void run () {
+									new MinecraftDownloader().download (mContext,SDCardUtils.getBaseMinecraftPath ()+"/versions/"+tmp.get (arg0).id ()+"/"+tmp.get (arg0).id ()+".json");
+								}
+							});
+						}
 
-							@Override
-							public void onFailure (@NonNull Call call, @NonNull IOException e) {
+						@Override
+						public void onFailure (@NonNull Call call, @NonNull IOException e) {
 
-							}
-						});
-					}
-				});
+						}
+					});
+				}
+			});
 			madapter.setTag(viewh);
 		} else {
 			viewh = (ViewHolder) madapter.getTag();
@@ -225,4 +225,3 @@ public class VersionLibraryAdapter extends BaseAdapter {
 	}
 
 }
-

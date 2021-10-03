@@ -10,9 +10,9 @@
 
     <string name="fb_user_manage">用户管理</string>
     <string name="fb_game_manage">游戏管理</string>
-    <string name="fb_game_list">游戏列表</string>
+    <string name="fb_version_list">版本列表</string>
+    <string name="fb_download">下载</string>
     <string name="fb_library_manage">核心安装管理</string>
-    <string name="fb_game_path">游戏目录</string>
     <string name="fb_launcher_settings">启动器设置</string>
 
     <!--  =====================================Homepage===================================== -->
@@ -27,11 +27,17 @@
 
     <!--  =====================================Users_Manage===================================== -->
 
-    <string name="user_new_account">新建账户</string>
+    <string name="fb_user_add_account">添加账户</string>
+    <string name="fb_user_offline_mode">离线模式</string>
+    <string name="fb_user_mojang_account">Mojang 账户</string>
+    <string name="fb_user_microsoft_account">微软账户</string>
+    <string name="fb_user_add_authentication_server">添加认证服务器</string>
+    <string name="fb_user_external_login">外置登录(authlib-injector)</string>
+
     <string name="user_login_mode">登录方式</string>
     <string name="user_account_name">用户名</string>
-    <string name="user_mojang_account">注:在此填写您的Mojang账户!</string>
-    <string name="user_microsoft_account">注:在此填写您的Microsoft账户!</string>
+    <string name="user_mojang_accounts">注:在此填写您的Mojang账户!</string>
+    <string name="user_microsoft_accounts">注:在此填写您的Microsoft账户!</string>
     <string name="user_password">密码</string>
     <string name="user_mojang_password">注:在此填写您的Mojang密码!</string>
     <string name="user_microsoft_password">注:在此填写您的Microsoft密码!</string>
@@ -39,6 +45,10 @@
     <string name="user_determine">确定</string>
 
     <!--  =====================================Games_List===================================== -->
+
+    <string name="fb_version_list_add_minecraft_path">添加游戏目录</string>
+    <string name="fb_version_list_install_pack">安装整合包</string>
+    <string name="fb_version_list_refresh">刷新</string>
 
     <string name="list_title_install_games">安装新游戏版本</string>
     <string name="list_title_install_packages">安装整合包</string>
@@ -52,7 +62,8 @@
     <string name="menu_derive_package">导出整合包</string>
     <string name="menu_games_folder">游戏文件夹</string>
 
-    <!--  =====================================Games_List===================================== -->
+    <!--  =====================================Download===================================== -->
+
     <string name="download_title">国内下载源由BMCLAPI和我的世界中文论坛(MCBBS)提供1高速下载服务。BMCLAPI是公益服，请赞助BMCLAPI以获得稳定高速的下载服务，点击此处查阅详细信息</string>
     <string name="download_source">下载源</string>
     <string name="download_release">稳定版</string>
@@ -61,6 +72,8 @@
 
     <string name="download_downloading">下载中...</string>
     <string name="download_cancel">取消下载</string>
+
+    <!--  =====================================Download===================================== -->
 
     <string name="title_clear_log">清理日志</string>
     <string name="title_refresh_log">刷新日志</string>
