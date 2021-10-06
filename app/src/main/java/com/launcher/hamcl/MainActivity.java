@@ -14,6 +14,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
@@ -25,12 +26,12 @@ import com.launcher.hamcl.setting.model.SettingModel;
 import com.launcher.hamcl.uis.functionbar.FunctionbarFragment;
 import com.launcher.hamcl.uis.functionbar.UserFunctionbarFragment;
 import com.launcher.hamcl.uis.functionbar.VersionListFunctionbarFragment;
-import com.launcher.hamcl.uis.homepage.VersionListFragment;
 import com.launcher.hamcl.uis.homepage.GamesPathFragment;
 import com.launcher.hamcl.uis.homepage.LauncherSettingFragment;
 import com.launcher.hamcl.uis.homepage.LibraryFragment;
 import com.launcher.hamcl.uis.homepage.StartFragment;
 import com.launcher.hamcl.uis.homepage.UserFragment;
+import com.launcher.hamcl.uis.homepage.VersionListFragment;
 import com.launcher.hamcl.uis.homepage.seconduis.DownloadGamesFragment;
 import com.launcher.hamcl.widget.MaterialDesignToast;
 import com.tbruyelle.rxpermissions2.Permission;
@@ -40,7 +41,7 @@ import java.util.HashMap;
 
 import io.reactivex.functions.Consumer;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, Thread.UncaughtExceptionHandler {
 
     private static final int REQUEST_PERMISSION_CODE = 0;
     private RxPermissions rxPermissions;
@@ -81,166 +82,176 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public int Homepageline;
     private HashMap<Integer, String> ToolbarStringMap;//fragment管理者
 
+    private static MainActivity INSTANCE;
+
+    public static MainActivity getInstance () {
+        if (INSTANCE == null) {
+            INSTANCE = new MainActivity ();
+        }
+        return INSTANCE;
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        getSupportActionBar();
+    protected void onCreate (Bundle savedInstanceState) {
+        super.onCreate (savedInstanceState);
+        setContentView (R.layout.activity_main);
+
+        Toolbar toolbar = (Toolbar) findViewById (R.id.toolbar);
+        getSupportActionBar ();
 
         rxPermissions = new RxPermissions (this);
 
-        requestPermission();
-        initSetting();
-        getSettingFile();
-        saveSetting();
-        initView();
+        requestPermission ();
+        initSetting ();
+        getSettingFile ();
+        saveSetting ();
+        initView ();
         //setFunctionbarClick(0);
-        FunctionbarMap();
-        HomepageMap();
+        FunctionbarMap ();
+        HomepageMap ();
     }
 
-    private void initView(){
-        toolbar_button_backspace = (ImageButton)findViewById(R.id.toolbar_button_backspace);
-        main_text_showstate = (TextView)findViewById(R.id.main_text_showstate);
-        toolbar_button_backhome = (ImageButton)findViewById(R.id.toolbar_button_backhome);
-        toolbar_button_refresh = (ImageButton)findViewById(R.id.toolbar_button_refresh);
+    private void initView () {
+        toolbar_button_backspace = (ImageButton) findViewById (R.id.toolbar_button_backspace);
+        main_text_showstate = (TextView) findViewById (R.id.main_text_showstate);
+        toolbar_button_backhome = (ImageButton) findViewById (R.id.toolbar_button_backhome);
+        toolbar_button_refresh = (ImageButton) findViewById (R.id.toolbar_button_refresh);
 
-        toolbar_button_backspace.setOnClickListener(this);
-        toolbar_button_backhome.setOnClickListener(this);
-        toolbar_button_refresh.setOnClickListener(this);
+        toolbar_button_backspace.setOnClickListener (this);
+        toolbar_button_backhome.setOnClickListener (this);
+        toolbar_button_refresh.setOnClickListener (this);
 
-        functionbar_fl = (FrameLayout)findViewById(R.id.functionbar_fl);
-        homepage_fl = (FrameLayout)findViewById(R.id.homepage_fl);
+        functionbar_fl = (FrameLayout) findViewById (R.id.functionbar_fl);
+        homepage_fl = (FrameLayout) findViewById (R.id.homepage_fl);
     }
 
-    private void initSetting() {
-        settingManager = new SettingManager(this);
-        settingModel = new SettingModel();
-        configModel = new ConfigModel();
+    private void initSetting () {
+        settingManager = new SettingManager (this);
+        settingModel = new SettingModel ();
+        configModel = new ConfigModel ();
     }
 
-    private void getSettingFile() {
-        configModel = settingManager.getConfigFromFile(configModel);
+    private void getSettingFile () {
+        configModel = settingManager.getConfigFromFile (configModel);
     }
 
-    private void saveSetting() {
-        settingManager.saveConfigToFile(configModel);
+    private void saveSetting () {
+        settingManager.saveConfigToFile (configModel);
     }
 
-    private void FunctionbarMap() {
-        FunctionbarUIMap = new HashMap<Integer,Integer>();
-        FunctionbarUIMap.put(0,0);
-        FunctionbarUIMap.put(1,0);
-        FunctionbarUIMap.put(3,0);
+    private void FunctionbarMap () {
+        FunctionbarUIMap = new HashMap<Integer, Integer> ();
+        FunctionbarUIMap.put (0, 0);
+        FunctionbarUIMap.put (1, 0);
+        FunctionbarUIMap.put (3, 0);
 
-        Functionbarline=0;
-        setFunctionbarClick(Homepageline);
+        Functionbarline = 0;
+        setFunctionbarClick (Homepageline);
     }
 
-    private void HomepageMap() {
-        HomepageUIMap = new HashMap<Integer,Integer>();
-        HomepageUIMap.put(0,0);
-        HomepageUIMap.put(1,0);
-        HomepageUIMap.put(2,0);
-        HomepageUIMap.put(3,0);
-        HomepageUIMap.put(4,0);
-        HomepageUIMap.put(5,0);
-        HomepageUIMap.put(6,0);
+    private void HomepageMap () {
+        HomepageUIMap = new HashMap<Integer, Integer> ();
+        HomepageUIMap.put (0, 0);
+        HomepageUIMap.put (1, 0);
+        HomepageUIMap.put (2, 0);
+        HomepageUIMap.put (3, 0);
+        HomepageUIMap.put (4, 0);
+        HomepageUIMap.put (5, 0);
+        HomepageUIMap.put (6, 0);
         //map.put(目前值,上一级值);
-        HomepageUIMap.put(201,3);
-        HomepageUIMap.put(203,2);
+        HomepageUIMap.put (201, 3);
+        HomepageUIMap.put (203, 2);
 
-        ToolbarStringMap = new HashMap<Integer,String>();
-        ToolbarStringMap.put(0,getString(R.string.home_title_homepage));
-        ToolbarStringMap.put(1,getString(R.string.fb_user_manage));
-        ToolbarStringMap.put(2,getString(R.string.fb_game_manage));
-        ToolbarStringMap.put(3,getString(R.string.fb_version_list));
-        ToolbarStringMap.put(4,getString(R.string.fb_download));
-        ToolbarStringMap.put(5,getString(R.string.fb_library_manage));
-        ToolbarStringMap.put(6,getString(R.string.fb_launcher_settings));
-        ToolbarStringMap.put(201,getString(R.string.home_title_download_games));
-        ToolbarStringMap.put(203,getString(R.string.home_title_game_setting));
+        ToolbarStringMap = new HashMap<Integer, String> ();
+        ToolbarStringMap.put (0, getString (R.string.home_title_homepage));
+        ToolbarStringMap.put (1, getString (R.string.fb_user_manage));
+        ToolbarStringMap.put (2, getString (R.string.fb_game_manage));
+        ToolbarStringMap.put (3, getString (R.string.fb_version_list));
+        ToolbarStringMap.put (4, getString (R.string.fb_download));
+        ToolbarStringMap.put (5, getString (R.string.fb_library_manage));
+        ToolbarStringMap.put (6, getString (R.string.fb_launcher_settings));
+        ToolbarStringMap.put (201, getString (R.string.home_title_download_games));
+        ToolbarStringMap.put (203, getString (R.string.home_title_game_setting));
 
-        Homepageline=0;
-        setHomepageClick(Homepageline);
+        Homepageline = 0;
+        setHomepageClick (Homepageline);
     }
 
     @Override
-    public void onClick(View v) {
-        switch (v.getId()){
+    public void onClick (View v) {
+        switch (v.getId ()) {
             case R.id.toolbar_button_backspace:
-                setFunctionbarClick(FunctionbarUIMap.get(Functionbarline));
-                Functionbarline = FunctionbarUIMap.get(Functionbarline);
+                setFunctionbarClick (FunctionbarUIMap.get (Functionbarline));
+                Functionbarline = FunctionbarUIMap.get (Functionbarline);
 
-                setHomepageClick(HomepageUIMap.get(Homepageline));
-                Homepageline = HomepageUIMap.get(Homepageline);
+                setHomepageClick (HomepageUIMap.get (Homepageline));
+                Homepageline = HomepageUIMap.get (Homepageline);
                 break;
             case R.id.toolbar_button_backhome:
-                setFunctionbarClick(0);
-                setHomepageClick(0);
+                setFunctionbarClick (0);
+                setHomepageClick (0);
                 break;
             case R.id.toolbar_button_refresh:
-                refresh();
+                refresh ();
                 break;
         }
     }
 
-    public void refresh() {
-        finish();
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+    public void refresh () {
+        finish ();
+        Intent intent = new Intent (this, MainActivity.class);
+        startActivity (intent);
     }
 
-    public void setFunctionbarClick(int type) {
+    public void setFunctionbarClick (int type) {
         //开启事务
-        FunctionbarManager = getSupportFragmentManager();
+        FunctionbarManager = getSupportFragmentManager ();
         //获取到fragment的管理对象
-        FunctionbarTransaction = FunctionbarManager.beginTransaction();
+        FunctionbarTransaction = FunctionbarManager.beginTransaction ();
         //加载切换动画
-        FunctionbarTransaction.setCustomAnimations(R.anim.layout_show,R.anim.layout_hide);
+        FunctionbarTransaction.setCustomAnimations (R.anim.layout_show, R.anim.layout_hide);
         //显示之前将所有的fragment都隐藏起来,在去显示我们想要显示的fragment
-        hideFunctionbarFragment(FunctionbarTransaction);
+        hideFunctionbarFragment (FunctionbarTransaction);
         switch (type) {
             case 0://左侧功能栏
                 //如果左侧功能栏的fragment是null的话,就创建一个
                 if (fb_fragment == null) {
-                    fb_fragment = new FunctionbarFragment();
+                    fb_fragment = new FunctionbarFragment ();
                     //加入事务
-                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_fragment);
+                    FunctionbarTransaction.add (R.id.functionbar_fl, fb_fragment);
                 } else {
                     //如果左侧功能栏fragment不为空就显示出来
-                    FunctionbarTransaction.show(
+                    FunctionbarTransaction.show (
                             fb_fragment);
                 }
                 break;
             case 1://左侧功能栏
                 //如果左侧功能栏的fragment是null的话,就创建一个
                 if (fb_user_fragment == null) {
-                    fb_user_fragment = new UserFunctionbarFragment();
+                    fb_user_fragment = new UserFunctionbarFragment ();
                     //加入事务
-                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_user_fragment);
+                    FunctionbarTransaction.add (R.id.functionbar_fl, fb_user_fragment);
                 } else {
                     //如果左侧功能栏fragment不为空就显示出来
-                    FunctionbarTransaction.show(
+                    FunctionbarTransaction.show (
                             fb_user_fragment);
                 }
                 break;
             case 3://左侧功能栏
                 //如果左侧功能栏的fragment是null的话,就创建一个
                 if (fb_version_list_fragment == null) {
-                    fb_version_list_fragment = new VersionListFunctionbarFragment();
+                    fb_version_list_fragment = new VersionListFunctionbarFragment ();
                     //加入事务
-                    FunctionbarTransaction.add(R.id.functionbar_fl, fb_version_list_fragment);
+                    FunctionbarTransaction.add (R.id.functionbar_fl, fb_version_list_fragment);
                 } else {
                     //如果左侧功能栏fragment不为空就显示出来
-                    FunctionbarTransaction.show(
+                    FunctionbarTransaction.show (
                             fb_version_list_fragment);
                 }
                 break;
         }
         //提交事务
-        FunctionbarTransaction.commit();
+        FunctionbarTransaction.commit ();
     }
 
     /**
@@ -248,49 +259,49 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      * @param；FunctionbarTransaction
      */
-    public void hideFunctionbarFragment(FragmentTransaction fragmentTransaction) {
+    public void hideFunctionbarFragment (FragmentTransaction fragmentTransaction) {
         //如果此fragment不为空的话就隐藏起来
         if (fb_fragment != null) {
-            fragmentTransaction.hide(fb_fragment);
+            fragmentTransaction.hide (fb_fragment);
         }
         if (fb_user_fragment != null) {
-            fragmentTransaction.hide(fb_user_fragment);
+            fragmentTransaction.hide (fb_user_fragment);
         }
         if (fb_version_list_fragment != null) {
-            fragmentTransaction.hide(fb_version_list_fragment);
+            fragmentTransaction.hide (fb_version_list_fragment);
         }
     }
 
-    public void setHomepageClick(int type) {
+    public void setHomepageClick (int type) {
         //开启事务
-        HomepagerManager = getSupportFragmentManager();
+        HomepagerManager = getSupportFragmentManager ();
         //获取到fragment的管理对象
-        HomepageTransaction = HomepagerManager.beginTransaction();
+        HomepageTransaction = HomepagerManager.beginTransaction ();
         //加载切换动画
-        HomepageTransaction.setCustomAnimations(R.anim.layout_show,R.anim.layout_hide);
+        HomepageTransaction.setCustomAnimations (R.anim.layout_show, R.anim.layout_hide);
         //显示之前将所有的fragment都隐藏起来,在去显示我们想要显示的fragment
-        hideHomepageFragment(HomepageTransaction);
-        setToolbarTitle(ToolbarStringMap.get(type));
+        hideHomepageFragment (HomepageTransaction);
+        setToolbarTitle (ToolbarStringMap.get (type));
         switch (type) {
             case 0://主页
                 //如果主页的fragment是null的话,就创建一个
                 if (start_fragment == null) {
-                    start_fragment = new StartFragment();
+                    start_fragment = new StartFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, start_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, start_fragment);
                 } else {
                     //如果主页fragment不为空就显示出来
-                    HomepageTransaction.show(start_fragment);
+                    HomepageTransaction.show (start_fragment);
                 }
                 break;
             case 1:
                 if (user_fragment == null) {
-                    user_fragment = new UserFragment();
+                    user_fragment = new UserFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, user_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, user_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    HomepageTransaction.show(user_fragment);
+                    HomepageTransaction.show (user_fragment);
                 }
                 break;
            /*case 2:
@@ -305,52 +316,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;*/
             case 3:
                 if (games_list_fragment == null) {
-                    games_list_fragment = new VersionListFragment();
+                    games_list_fragment = new VersionListFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, games_list_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, games_list_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    HomepageTransaction.show(games_list_fragment);
+                    HomepageTransaction.show (games_list_fragment);
                 }
                 break;
             case 4:
                 if (games_path_fragment == null) {
-                    games_path_fragment = new GamesPathFragment();
+                    games_path_fragment = new GamesPathFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, games_path_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, games_path_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    HomepageTransaction.show(games_path_fragment);
+                    HomepageTransaction.show (games_path_fragment);
                 }
                 break;
             case 5:
                 if (library_fragment == null) {
-                    library_fragment = new LibraryFragment();
+                    library_fragment = new LibraryFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, library_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, library_fragment);
                 } else {
                     //如果核心安装fragment不为空就显示出来
-                    HomepageTransaction.show(library_fragment);
+                    HomepageTransaction.show (library_fragment);
                 }
                 break;
-			case 6:
+            case 6:
                 if (launcher_setting_fragment == null) {
-                    launcher_setting_fragment = new LauncherSettingFragment();
+                    launcher_setting_fragment = new LauncherSettingFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, launcher_setting_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, launcher_setting_fragment);
                 } else {
                     //如果用户fragment不为空就显示出来
-                    HomepageTransaction.show(launcher_setting_fragment);
+                    HomepageTransaction.show (launcher_setting_fragment);
                 }
                 break;
-			case 201:
-				if (download_games_fragment == null) {
-                    download_games_fragment = new DownloadGamesFragment();
+            case 201:
+                if (download_games_fragment == null) {
+                    download_games_fragment = new DownloadGamesFragment ();
                     //加入事务
-                    HomepageTransaction.add(R.id.homepage_fl, download_games_fragment);
+                    HomepageTransaction.add (R.id.homepage_fl, download_games_fragment);
                 } else {
                     //如果主页fragment不为空就显示出来
-                    HomepageTransaction.show(download_games_fragment);
+                    HomepageTransaction.show (download_games_fragment);
                 }
                 break;
 			/*case 202:
@@ -376,7 +387,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         }
         //提交事务
-        HomepageTransaction.commit();
+        HomepageTransaction.commit ();
     }
 
     /**
@@ -384,22 +395,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      *
      * @param fragmentTransaction
      */
-    public void hideHomepageFragment(FragmentTransaction fragmentTransaction) {
+    public void hideHomepageFragment (FragmentTransaction fragmentTransaction) {
         //如果此fragment不为空的话就隐藏起来
         if (start_fragment != null) {
-            fragmentTransaction.hide(start_fragment);
+            fragmentTransaction.hide (start_fragment);
         }
         if (user_fragment != null) {
-            fragmentTransaction.hide(user_fragment);
+            fragmentTransaction.hide (user_fragment);
         }
         if (games_list_fragment != null) {
-            fragmentTransaction.hide(games_list_fragment);
+            fragmentTransaction.hide (games_list_fragment);
         }
 		/*if (games_fragment != null) {
             fragmentTransaction.hide(games_fragment);
         }*/
-		if (download_games_fragment != null) {
-            fragmentTransaction.hide(download_games_fragment);
+        if (download_games_fragment != null) {
+            fragmentTransaction.hide (download_games_fragment);
         }
 		/*if (install_package_fragment != null) {
             fragmentTransaction.hide(install_package_fragment);
@@ -408,57 +419,61 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             fragmentTransaction.hide(games_setting_fragment);
         }*/
         if (library_fragment != null) {
-            fragmentTransaction.hide(library_fragment);
+            fragmentTransaction.hide (library_fragment);
         }
-		if (games_path_fragment != null) {
-            fragmentTransaction.hide(games_path_fragment);
+        if (games_path_fragment != null) {
+            fragmentTransaction.hide (games_path_fragment);
         }
-		if (launcher_setting_fragment != null) {
-            fragmentTransaction.hide(launcher_setting_fragment);
+        if (launcher_setting_fragment != null) {
+            fragmentTransaction.hide (launcher_setting_fragment);
         }
     }
 
-    public void setToolbarTitle(String s)
-    {
-        main_text_showstate.setText(s);
+    public void setToolbarTitle (String s) {
+        main_text_showstate.setText (s);
     }
 
-    /**【当Activity销毁时】**/
+    /**
+     * 【当Activity销毁时】
+     **/
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        getSettingFile();
-        saveSetting();
+    public void onDestroy () {
+        super.onDestroy ();
+        getSettingFile ();
+        saveSetting ();
     }
 
-    public void requestPermission() {
+    public void requestPermission () {
 
-        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.INTERNET};
+int i = 444;
+int[] g = {5};
+int hh = g[i];
+        String[] permissions = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.INTERNET};
 
         rxPermissions.requestEach (permissions).subscribe (new Consumer<Permission> () {
             @SuppressLint("CheckResult")
             @Override
             public void accept (Permission permission) throws Exception {
-                if (permission.granted){
+                if (permission.granted) {
 
-                }else if (permission.shouldShowRequestPermissionRationale){
-                    MaterialDesignToast.makeText ( MainActivity.this,"没有必要权限无法运行，请给予HAMCL权限",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                } else if (permission.shouldShowRequestPermissionRationale) {
+                    MaterialDesignToast.makeText (MainActivity.this, "没有必要权限无法运行，请给予HAMCL权限", Toast.LENGTH_LONG, MaterialDesignToast.TYPE_WARNING).show ();
                     requestPermission ();
-                }else {
-                    MaterialDesignToast.makeText ( MainActivity.this,"没有必要权限无法运行，请在设置中手动给予HAMCL权限",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_WARNING).show ();
+                } else {
+                    MaterialDesignToast.makeText (MainActivity.this, "没有必要权限无法运行，请在设置中手动给予HAMCL权限", Toast.LENGTH_LONG, MaterialDesignToast.TYPE_WARNING).show ();
                 }
             }
         });
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
             // 适配android11读写权限
-            if (Environment.isExternalStorageManager()) {
+            if (Environment.isExternalStorageManager ()) {
                 //已获取android读写权限
             } else {
-                MaterialDesignToast.makeText (this,"请给予管理全部文件的权限，否则无法运行",Toast.LENGTH_LONG,MaterialDesignToast.TYPE_INFO).show ();
-                Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-                intent.setData(Uri.parse("package:" + getPackageName()));
-                startActivityForResult(intent, REQUEST_PERMISSION_CODE);
+                MaterialDesignToast.makeText (this, "请给予管理全部文件的权限，否则无法运行", Toast.LENGTH_LONG, MaterialDesignToast.TYPE_INFO).show ();
+                Intent intent = new Intent (Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
+                intent.setData (Uri.parse ("package:" + getPackageName ()));
+                startActivityForResult (intent, REQUEST_PERMISSION_CODE);
             }
             return;
         }
@@ -475,5 +490,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                     Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         }*/
+    }
+
+    @Override
+    public void uncaughtException (@NonNull Thread thread, @NonNull Throwable throwable) {
+
+    }
+
+    public static void jump (Intent i) {
+
     }
 }
